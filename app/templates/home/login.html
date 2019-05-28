@@ -1,0 +1,79 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>登录</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='base/images/logo.bmp') }}">
+    <link href="{{ url_for('static', filename='base/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='base/plugins/font-awesome/css/font-awesome.min.css') }}"
+          rel="stylesheet">
+    <link href="{{ url_for('static', filename='base/css/reset.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='base/css/home/main.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='base/css/home/login.css') }}" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+{#    <div class="logo-bar"><a href="/"><img src="{{ url_for('static', filename='base/images/logo2.png') }}"></a></div>#}
+
+    <form class="form-login" action="" method="post">
+        {{ form.csrf_token() }}
+{#        {{ form.errors }}#}
+{#      打印flash消息#}
+      {% for message in get_flashed_messages() %}
+            <span style="color:red;">[{{ message }}]</span>
+      {% endfor %}
+        <div style="font-size: 16px;">用户登录</div>
+        <div class="form-group form-group-lg">
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-user fa-lg fa-fw"></i></div>
+{#                <input type="text" class="form-control" name="mobile" id="mobile" placeholder="用户名/邮箱/手机号" required>#}
+                {{ form.username() }}
+                {% for error in form.username.errors %}
+                <span style="color:red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="error-msg" id="mobile-err"><i class="fa fa-exclamation-circle"></i><span></span></div>
+        <div class="form-group form-group-lg">
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-lock fa-lg fa-fw"></i></div>
+{#                <input type="password" class="form-control" name="password" id="password" placeholder="密码" required>#}
+                {{ form.password() }}
+                {% for error in form.password.errors %}
+                <span style="color:red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="error-msg" id="password-err"><i class="fa fa-exclamation-circle"></i><span></span></div>
+        <div class="form-group form-group-lg">
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-image fa-lg fa-fw"></i></div>
+{#                <input type="text" class="form-control" name="imagecode" id="imagecode" placeholder="图片验证码" required>#}
+                {{ form.imagecode() }}
+                {% for error in form.imagecode.errors %}
+                <span style="color:red;">[{{ error }}]</span>
+                {% endfor %}
+                <div class="input-group-addon image-code" onclick="generateImageCode();"><img id="image-code" src=""></div>
+            </div>
+        </div>
+        {{ form.remeber_me() }} {{ form.remeber_me.label }}
+        <div class="error-msg" id="image-code-err"><i class="fa fa-exclamation-circle"></i><span></span></div>
+{#        <button type="submit" class="btn btn-lg btn-theme btn-block">登录</button>#}
+                {{ form.submit() }}
+                {% for error in form.submit.errors %}
+                <span style="color:red;">[{{ error }}]</span>
+                {% endfor %}
+
+        <div class="error-msg" id="result-err"><i class="fa fa-exclamation-circle"></i><span></span></div>
+       <a class="index-a" href="{{ url_for("home.index") }}"> <i class="fa fa-long-arrow-left" aria-hidden="true"></i>返回主页</a>
+        <p class="register-a">没有账号，<a href="{{ url_for("home.register") }}">立即注册</a>/<a href="{{ url_for("home.reset_password_request") }}">忘记密码?</a></p>
+    </form>
+</div>
+<script src="{{ url_for('static', filename='base/js/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='base/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static', filename='base/js/home/md5.min.js') }}"></script>
+<script src="{{ url_for('static', filename='base/js/home/status_code.js') }}"></script>
+<script src="{{ url_for('static', filename='base/js/home/login.js') }}"></script>
+</body>
+</html>

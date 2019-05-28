@@ -1,0 +1,13 @@
+如果更新了模型中的字段
+需要进行如下步骤：
+1、删除掉已存在的migrations
+2、运行python manager.py db init初始化数据模型
+3、python manager.py db migrate 提交改变
+4、python manager.py db upgrade 完成更新
+
+遇到的问题：
+    在做标签选择的时候遇到的问题，需要在form表单里边读取数据库中的数据，但是这时候db还没有创建，就出现引用问题
+    ，解决办法是通过构造方法，在构造方法中读取数据库数据，这样只有在实例化的时候读取。
+
+
+

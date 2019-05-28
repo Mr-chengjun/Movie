@@ -1,0 +1,12 @@
+.btn-theme, .btn-theme:hover {
+    background-color: #008B8B;
+    border-color: #008B8B;
+    color: #fff;
+}
+.footer {
+    width: 100%;
+    text-align: center;
+    font-size: 15px;
+    color: #99999c;
+    padding: 14px 0px;
+}

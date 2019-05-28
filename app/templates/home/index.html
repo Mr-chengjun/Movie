@@ -1,0 +1,300 @@
+{% extends "home/home.html" %}
+
+{% block content %}
+    <!--热门电影-->
+    <section id="hotmovie" style="margin-top:0px">
+        <div class="container">
+            <div class="row wow fadeInRight" data-wow-delay="0.6s">
+                <div class="row">
+                    <iframe class="wow fadeIn" width="100%" height="375px" frameborder=0 scrolling=no
+                            src="{{ url_for('home.animation') }}"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--热门电影-->
+    <!--电影列表-->
+    <section id="movielist">
+        <div class="container">
+            <div class="row wow fadeIn" data-wow-delay="0.6s">
+                <div class="col-md-12 table-responsive">
+                    <div class="table text-left table-bordered body" id="movietags">
+                        <div class="select_goods_box ">
+                            <div class="left">
+                                <span>类型:</span>
+                            </div>
+                            <div class="right">
+                                <input type="radio" id="q1" name="A1" checked="checked"/>
+                                <label for="q1">
+                                    全部
+                                </label>
+                                <input type="radio" id="q2" name="A1"/>
+                                <label for="q2">
+                                    喜剧
+                                </label>
+                                <input type="radio" id="q3" name="A1"/>
+                                <label for="q3">
+                                    动画
+                                </label>
+                                <input type="radio" id="q4" name="A1"/>
+                                <label for="q4">
+                                    剧情
+                                </label>
+                                <input type="radio" id="q5" name="A1"/>
+                                <label for="q5">
+                                    恐怖
+                                </label>
+                                <input type="radio" id="q6" name="A1"/>
+                                <label for="q6">
+                                    惊悚
+                                </label>
+                                <input type="radio" id="q7" name="A1"/>
+                                <label for="q7">
+                                    科幻
+                                </label>
+                                <input type="radio" id="q8" name="A1"/>
+                                <label for="q8">
+                                    悬疑
+                                </label>
+                                <input type="radio" id="q9" name="A1"/>
+                                <label for="q9">
+                                    犯罪
+                                </label>
+                                <input type="radio" id="q12" name="A1"/>
+                                <label for="q12">
+                                    喜剧
+                                </label>
+                                <input type="radio" id="q13" name="A1"/>
+                                <label for="q13">
+                                    动画
+                                </label>
+                                <input type="radio" id="q14" name="A1"/>
+                                <label for="q14">
+                                    剧情
+                                </label>
+                                <input type="radio" id="q15" name="A1"/>
+                                <label for="q15">
+                                    恐怖
+                                </label>
+                                <input type="radio" id="q16" name="A1"/>
+                                <label for="q16">
+                                    惊悚
+                                </label>
+
+                            </div>
+
+
+                        </div>
+                        <div class="line"></div>
+                        <div class="select_goods_box ">
+                            <div class="left">
+                                <span>区域:</span>
+                            </div>
+                            <div class="right">
+                                <input type="radio" id="q21" name="A2" checked="checked"/>
+                                <label for="q21">
+                                    全部
+                                </label>
+                                <input type="radio" id="q22" name="A2"/>
+                                <label for="q22">
+                                    大陆
+                                </label>
+                                <input type="radio" id="q23" name="A2"/>
+                                <label for="q23">
+                                    美国
+                                </label>
+                                <input type="radio" id="q24" name="A2"/>
+                                <label for="q24">
+                                    韩国
+                                </label>
+                                <input type="radio" id="q25" name="A2"/>
+                                <label for="q25">
+                                    日本
+                                </label>
+                                <input type="radio" id="q26" name="A2"/>
+                                <label for="q26">
+                                    中国香港
+                                </label>
+                                <input type="radio" id="q27" name="A2"/>
+                                <label for="q27">
+                                    中国台湾
+                                </label>
+                                <input type="radio" id="q28" name="A2"/>
+                                <label for="q28">
+                                    印度
+                                </label>
+                                <input type="radio" id="q29" name="A2"/>
+                                <label for="q29">
+                                    英国
+                                </label>
+
+                                <input type="radio" id="q211" name="A2" checked="checked"/>
+                                <label for="q211">
+                                    法国
+                                </label>
+                                <input type="radio" id="q212" name="A2"/>
+                                <label for="q212">
+                                    德国
+                                </label>
+                                <input type="radio" id="q213" name="A2"/>
+                                <label for="q213">
+                                    新加坡
+                                </label>
+                                <input type="radio" id="q214" name="A2"/>
+                                <label for="q214">
+                                    俄罗斯
+                                </label>
+
+
+                            </div>
+
+
+                        </div>
+                        <div class="line"></div>
+                        <div class="select_goods_box ">
+                            <div class="left">
+                                <span>年代:</span>
+                            </div>
+                            <div class="right">
+                                <input type="radio" id="q31" name="A3" checked="checked"/>
+                                <label for="q31">
+                                    全部
+                                </label>
+                                <input type="radio" id="q32" name="A3"/>
+                                <label for="q32">
+                                    2019以后
+                                </label>
+                                <input type="radio" id="q33" name="A3"/>
+                                <label for="q33">
+                                    2019
+                                </label>
+                                <input type="radio" id="q34" name="A3"/>
+                                <label for="q34">
+                                    2018
+                                </label>
+                                <input type="radio" id="q35" name="A3"/>
+                                <label for="q35">
+                                    2017
+                                </label>
+                                <input type="radio" id="q36" name="A3"/>
+                                <label for="q36">
+                                    2016
+                                </label>
+                                <input type="radio" id="q37" name="A3"/>
+                                <label for="q37">
+                                    2015
+                                </label>
+                                <input type="radio" id="q38" name="A3"/>
+                                <label for="q38">
+                                    2014
+                                </label>
+                                <input type="radio" id="q39" name="A3"/>
+                                <label for="q39">
+                                    2013
+                                </label>
+
+                                <input type="radio" id="q311" name="A3" checked="checked"/>
+                                <label for="q311">
+                                    2012
+                                </label>
+                                <input type="radio" id="q312" name="A3"/>
+                                <label for="q312">
+                                    2011
+                                </label>
+                                <input type="radio" id="q313" name="A3"/>
+                                <label for="q313">
+                                    2000-2010
+                                </label>
+                                <input type="radio" id="q314" name="A3"/>
+                                <label for="q314">
+                                    90年代
+                                </label>
+                                <input type="radio" id="q315" name="A3"/>
+                                <label for="q315">
+                                    80年代
+                                </label>
+                                <input type="radio" id="q316" name="A3"/>
+                                <label for="q316">
+                                    70年代
+                                </label>
+                                <input type="radio" id="q317" name="A3"/>
+                                <label for="q317">
+                                    更早
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="sort-radio">
+                    <input type="radio" id="sort1" name="sort" checked="checked"/>
+                    <label for="sort1">
+                        <div class="circle">
+                            <div class="circle-center"></div>
+                        </div>
+                        按热门排序
+                    </label>
+                    <input type="radio" id="sort2" name="sort" checked="checked"/>
+                    <label for="sort2">
+                        <div class="circle">
+                            <div class="circle-center"></div>
+                        </div>
+                        按时间排序
+                    </label>
+                    <input type="radio" id="sort3" name="sort" checked="checked"/>
+                    <label for="sort3">
+                        <div class="circle">
+                            <div class="circle-center"></div>
+                        </div>
+                        按评价排序
+                    </label>
+                </div>
+                <div class="movie">
+                    {% for i in range(1, 11) %}
+                    <div class="movie-box margin-left15">
+                        <div class="img-box">
+                            <a href="{{ url_for('home.play') }}"><img src="{{ url_for('static', filename='anim/img/1.jpg') }}"/>
+                                <span style="color: white; background-color: orangered;">9.5</span> </a>
+                        </div>
+
+                        <p>绿皮书</p>
+{#                        <span class="grade">#}
+{#								<i>9.</i>#}
+{#								<i>5</i>#}
+{#							</span>#}
+
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="col-md-12">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                            <li>
+                                <a href="#" aria-label="First">
+                                    <span aria-hidden="true">首页</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" aria-label="Previous">
+                                    <span aria-hidden="true">上一页</span>
+                                </a>
+                            </li>
+                            <li><a href="#">1&nbsp;/&nbsp;10</a></li>
+                            <li>
+                                <a href="#" aria-label="Next">
+                                    <span aria-hidden="true">下一页</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" aria-label="Last">
+                                    <span aria-hidden="true">尾页</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--电影列表-->
+{% endblock %}

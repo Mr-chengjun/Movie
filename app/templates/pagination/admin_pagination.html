@@ -1,0 +1,10 @@
+{% from "bootstrap/pagination.html" import render_pagination %}
+{% macro pagination(pagination) %}
+    <ul class="pagination pagination-sm no-margin pull-right">
+{#        <li><a href="{{ url_for("admin.tag_list", page=1) }}">首页</a></li>#}
+        {% if pagination %}
+            {{ render_pagination(pagination, prev="上一页", next="下一页") }}
+        {% endif %}
+{#        <li><a href="{{ url_for("admin.tag_list", page=pagination.pages) }}">尾页</a></li>#}
+    </ul>
+{% endmacro %}

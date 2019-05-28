@@ -1,0 +1,551 @@
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1 , user-scalable=no">
+		<title>微电影</title>
+		<link rel="shortcut icon" href="../static/base/images/logo.png">
+		<link rel="stylesheet" href="../static/base/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../static/base/css/bootstrap-movie.css">
+		<link rel="stylesheet" href="../static/base/css/animate.css">
+		<link rel="stylesheet" href="../1-index-animation/css/page.css">
+		<style>
+			.navbar-brand>img {
+            display: inline;
+        }
+
+    </style>
+		<style>
+			.media{
+            padding:3px;
+            border:1px solid #ccc
+        }
+
+    </style>
+	</head>
+
+	<body>
+		<!--导航-->
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
+				<!--小屏幕导航按钮和logo-->
+				<div class="navbar-header">
+					<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a href="index.html" class="navbar-brand" style="width:250px;">
+						<img src="../static/base/images/logo.png" style="height:30px;">&nbsp;微电影
+					</a>
+				</div>
+				<!--小屏幕导航按钮和logo-->
+				<!--导航-->
+				<div class="navbar-collapse collapse">
+					<form class="navbar-form navbar-left" role="search" style="margin-top:18px;">
+						<div class="form-group input-group">
+							<input type="text" class="form-control" placeholder="请输入电影名！">
+							<span class="input-group-btn">
+								<a class="btn btn-default" href="search.html"><span class="glyphicon glyphicon-search"></span>&nbsp;搜索</a>
+							</span>
+						</div>
+					</form>
+					<ul class="nav navbar-nav navbar-right">
+						<li>
+							<a class="curlink" href="index.html"><span class="glyphicon glyphicon-film"></span>&nbsp;电影</a>
+						</li>
+						<li>
+							<a class="curlink" href="login.html"><span class="glyphicon glyphicon-log-in"></span>&nbsp;登录</a>
+						</li>
+						<li>
+							<a class="curlink" href="register.html"><span class="glyphicon glyphicon-plus"></span>&nbsp;注册</a>
+						</li>
+						<li>
+							<a class="curlink" href="logout.html"><span class="glyphicon glyphicon-log-out"></span>&nbsp;退出</a>
+						</li>
+						<li>
+							<a class="curlink" href="user.html"><span class="glyphicon glyphicon-user"></span>&nbsp;会员</a>
+						</li>
+					</ul>
+				</div>
+				<!--导航-->
+
+			</div>
+		</nav>
+		<!--导航-->
+		<!--内容-->
+		<!--内容-->
+		<!--热门电影-->
+		<section id="hotmovie" style="margin-top:76px">
+			<div class="container">
+				<div class="row wow fadeInRight" data-wow-delay="0.6s">
+					<div class="row">
+						<iframe class="wow fadeIn" width="100%" height="375px" frameborder=0 scrolling=no src="../1-index-animation/animation.html"></iframe>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--热门电影-->
+		<!--电影列表-->
+		<section id="movielist">
+			<div class="container">
+				<div class="row wow fadeIn" data-wow-delay="0.6s">
+					<div class="col-md-12 table-responsive">
+						<div class="table text-left table-bordered body" id="movietags">
+							<div class="select_goods_box ">
+								<div class="left">
+									<span>类型:</span>
+								</div>
+								<div class="right">
+									<input type="radio" id="q1" name="A1" checked="checked" />
+									<label for="q1">
+										全部
+									</label>
+									<input type="radio" id="q2" name="A1" />
+									<label for="q2">
+										喜剧
+									</label>
+									<input type="radio" id="q3" name="A1" />
+									<label for="q3">
+										动画
+									</label>
+									<input type="radio" id="q4" name="A1" />
+									<label for="q4">
+										剧情
+									</label>
+									<input type="radio" id="q5" name="A1" />
+									<label for="q5">
+										恐怖
+									</label>
+									<input type="radio" id="q6" name="A1" />
+									<label for="q6">
+										惊悚
+									</label>
+									<input type="radio" id="q7" name="A1" />
+									<label for="q7">
+										科幻
+									</label>
+									<input type="radio" id="q8" name="A1" />
+									<label for="q8">
+										悬疑
+									</label>
+									<input type="radio" id="q9" name="A1" />
+									<label for="q9">
+										犯罪
+									</label>
+
+									<input type="radio" id="q11" name="A1" checked="checked" />
+									<label for="q11">
+										全部
+									</label>
+									<input type="radio" id="q12" name="A1" />
+									<label for="q12">
+										喜剧
+									</label>
+									<input type="radio" id="q13" name="A1" />
+									<label for="q13">
+										动画
+									</label>
+									<input type="radio" id="q14" name="A1" />
+									<label for="q14">
+										剧情
+									</label>
+									<input type="radio" id="q15" name="A1" />
+									<label for="q15">
+										恐怖
+									</label>
+									<input type="radio" id="q16" name="A1" />
+									<label for="q16">
+										惊悚
+									</label>
+
+								</div>
+
+
+							</div>
+							<div class="line"></div>
+							<div class="select_goods_box ">
+								<div class="left">
+									<span>区域:</span>
+								</div>
+								<div class="right">
+									<input type="radio" id="q21" name="A2" checked="checked" />
+									<label for="q21">
+										全部
+									</label>
+									<input type="radio" id="q22" name="A2" />
+									<label for="q22">
+										大陆
+									</label>
+									<input type="radio" id="q23" name="A2" />
+									<label for="q23">
+										美国
+									</label>
+									<input type="radio" id="q24" name="A2" />
+									<label for="q24">
+										韩国
+									</label>
+									<input type="radio" id="q25" name="A2" />
+									<label for="q25">
+										日本
+									</label>
+									<input type="radio" id="q26" name="A2" />
+									<label for="q26">
+										中国香港
+									</label>
+									<input type="radio" id="q27" name="A2" />
+									<label for="q27">
+										中国台湾
+									</label>
+									<input type="radio" id="q28" name="A2" />
+									<label for="q28">
+										印度
+									</label>
+									<input type="radio" id="q29" name="A2" />
+									<label for="q29">
+										英国
+									</label>
+
+									<input type="radio" id="q211" name="A2" checked="checked" />
+									<label for="q211">
+										法国
+									</label>
+									<input type="radio" id="q212" name="A2" />
+									<label for="q212">
+										德国
+									</label>
+									<input type="radio" id="q213" name="A2" />
+									<label for="q213">
+										新加坡
+									</label>
+									<input type="radio" id="q214" name="A2" />
+									<label for="q214">
+										俄罗斯
+									</label>
+
+
+								</div>
+
+
+							</div>
+							<div class="line"></div>
+							<div class="select_goods_box ">
+								<div class="left">
+									<span>年代:</span>
+								</div>
+								<div class="right">
+									<input type="radio" id="q31" name="A3" checked="checked" />
+									<label for="q31">
+										全部
+									</label>
+									<input type="radio" id="q32" name="A3" />
+									<label for="q32">
+										2019以后
+									</label>
+									<input type="radio" id="q33" name="A3" />
+									<label for="q33">
+										2019
+									</label>
+									<input type="radio" id="q34" name="A3" />
+									<label for="q34">
+										2018
+									</label>
+									<input type="radio" id="q35" name="A3" />
+									<label for="q35">
+										2017
+									</label>
+									<input type="radio" id="q36" name="A3" />
+									<label for="q36">
+										2016
+									</label>
+									<input type="radio" id="q37" name="A3" />
+									<label for="q37">
+										2015
+									</label>
+									<input type="radio" id="q38" name="A3" />
+									<label for="q38">
+										2014
+									</label>
+									<input type="radio" id="q39" name="A3" />
+									<label for="q39">
+										2013
+									</label>
+
+									<input type="radio" id="q311" name="A3" checked="checked" />
+									<label for="q311">
+										2012
+									</label>
+									<input type="radio" id="q312" name="A3" />
+									<label for="q312">
+										2011
+									</label>
+									<input type="radio" id="q313" name="A3" />
+									<label for="q313">
+										2000-2010
+									</label>
+									<input type="radio" id="q314" name="A3" />
+									<label for="q314">
+										90年代
+									</label>
+									<input type="radio" id="q315" name="A3" />
+									<label for="q315">
+										80年代
+									</label>
+									<input type="radio" id="q316" name="A3" />
+									<label for="q316">
+										70年代
+									</label>
+									<input type="radio" id="q317" name="A3" />
+									<label for="q317">
+										更早
+									</label>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div class="sort-radio">
+						<input type="radio" id="sort1" name="sort" checked="checked" />
+						<label for="sort1">
+							<div class="circle">
+								<div class="circle-center"></div>
+							</div>
+							按热门排序
+						</label>
+						<input type="radio" id="sort2" name="sort" checked="checked" />
+						<label for="sort2">
+							<div class="circle">
+								<div class="circle-center"></div>
+							</div>
+							按时间排序
+						</label>
+						<input type="radio" id="sort3" name="sort" checked="checked" />
+						<label for="sort3">
+							<div class="circle">
+								<div class="circle-center"></div>
+							</div>
+							按评价排序
+						</label>
+					</div>
+					<div class="movie">
+						<div class="movie-box margin-left15">
+							<div class="img-box">
+								<a href="play.html"><img src="../1-index-animation/img/1.jpg" />
+								<span>播放</span>
+
+							</div>
+							<p>绿皮书</p>
+							<span class="grade">
+								<i>9.</i>
+								<i>5</i>
+							</span>
+							</a>
+						</div>
+						<div class="movie-box">
+							<div class="img-box">
+								<img src="../1-index-animation/img/2.png" />
+								<div class="max2d"></div>
+								<span><a>购票</a></span>
+
+							</div>
+							<p>波西米亚狂想曲</p>
+							<span class="grade">
+								<i>9.</i>
+								<i>5</i>
+							</span>
+						</div>
+						<div class="movie-box">
+							<div class="img-box">
+								<img src="../1-index-animation/img/3.png" />
+								<div class="max3d"></div>
+								<span><a>购票</a></span>
+
+							</div>
+							<p>流浪地球</p>
+							<span class="grade">
+								<i>9.</i>
+								<i>3</i>
+							</span>
+						</div>
+						<div class="movie-box">
+							<div class="img-box">
+								<img src="../1-index-animation/img/4.png" />
+								<span><a>购票</a></span>
+
+							</div>
+							<p>老师·好</p>
+							<span class="grade">
+								<i>9.</i>
+								<i>3</i>
+							</span>
+						</div>
+						<div class="movie-box">
+							<div class="img-box">
+								<img src="../1-index-animation/img/5.png" />
+								<span><a>购票</a></span>
+
+							</div>
+							<p>反贪风暴4</p>
+							<span class="grade">
+								<i>9.</i>
+								<i>2</i>
+							</span>
+						</div>
+						<div class="movie-box margin-right0">
+							<div class="img-box">
+								<img src="../1-index-animation/img/6.png" />
+								<span><a>购票</a></span>
+
+							</div>
+							<p>我的英雄学院</p>
+							<span class="grade">
+								<i>9.</i>
+								<i>2</i>
+							</span>
+						</div>
+
+					</div>
+					<div class="movie">
+						<div class="movie-box margin-left15">
+							<div class="img-box">
+								<a href="play.html"><img src="../1-index-animation/img/1.jpg" />
+								<span>播放</span>
+
+							</div>
+							<p>绿皮书</p>
+							<span class="grade">
+								<i>9.</i>
+								<i>5</i>
+							</span>
+							</a>
+						</div>
+						<div class="movie-box">
+							<div class="img-box">
+								<img src="../1-index-animation/img/2.png" />
+								<div class="max2d"></div>
+								<span><a>购票</a></span>
+
+							</div>
+							<p>波西米亚狂想曲</p>
+							<span class="grade">
+								<i>9.</i>
+								<i>5</i>
+							</span>
+						</div>
+						<div class="movie-box">
+							<div class="img-box">
+								<img src="../1-index-animation/img/3.png" />
+								<div class="max3d"></div>
+								<span><a>购票</a></span>
+
+							</div>
+							<p>流浪地球</p>
+							<span class="grade">
+								<i>9.</i>
+								<i>3</i>
+							</span>
+						</div>
+						<div class="movie-box">
+							<div class="img-box">
+								<img src="../1-index-animation/img/4.png" />
+								<span><a>购票</a></span>
+
+							</div>
+							<p>老师·好</p>
+							<span class="grade">
+								<i>9.</i>
+								<i>3</i>
+							</span>
+						</div>
+						<div class="movie-box">
+							<div class="img-box">
+								<img src="../1-index-animation/img/5.png" />
+								<span><a>购票</a></span>
+
+							</div>
+							<p>反贪风暴4</p>
+							<span class="grade">
+								<i>9.</i>
+								<i>2</i>
+							</span>
+						</div>
+						<div class="movie-box margin-right0">
+							<div class="img-box">
+								<img src="../1-index-animation/img/6.png" />
+								<span><a>购票</a></span>
+
+							</div>
+							<p>我的英雄学院</p>
+							<span class="grade">
+								<i>9.</i>
+								<i>2</i>
+							</span>
+						</div>
+
+					</div>
+					<div class="col-md-12">
+						<nav aria-label="Page navigation">
+							<ul class="pagination">
+								<li>
+									<a href="#" aria-label="First">
+										<span aria-hidden="true">首页</span>
+									</a>
+								</li>
+								<li>
+									<a href="#" aria-label="Previous">
+										<span aria-hidden="true">上一页</span>
+									</a>
+								</li>
+								<li><a href="#">1&nbsp;/&nbsp;10</a></li>
+								<li>
+									<a href="#" aria-label="Next">
+										<span aria-hidden="true">下一页</span>
+									</a>
+								</li>
+								<li>
+									<a href="#" aria-label="Last">
+										<span aria-hidden="true">尾页</span>
+									</a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--电影列表-->
+		<!--底部-->
+		<footer>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<p>
+							©&nbsp;2017&nbsp;flaskmovie.imooc.com&nbsp;京ICP备 13046642号-2
+						</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!--底部-->
+		<script src="../static/base/js/jquery.min.js"></script>
+		<script src="../static/base/js/bootstrap.min.js"></script>
+		<script src="../static/base/js/jquery.singlePageNav.min.js"></script>
+		<script src="../static/base/js/wow.min.js"></script>
+		<script src="../static/lazyload/jquery.lazyload.min.js"></script>
+		<script src="//cdn.bootcss.com/holder/2.9.4/holder.min.js"></script>
+		<script>
+			$(function() {
+				new WOW().init();
+			})
+		</script>
+		<script>
+			$(document).ready(function() {
+				$("img.lazy").lazyload({
+					effect: "fadeIn"
+				});
+			});
+		</script>
+	</body>
+</html>
