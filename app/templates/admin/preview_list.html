@@ -1,5 +1,5 @@
 {% extends "admin/base.html" %}
-
+{% import "pagination/admin_pagination.html" as page %}
 {% block content %}
     <section class="content-header">
         <h1>微电影管理系统</h1>
@@ -27,6 +27,14 @@
                         </div>
                     </div>
                     <div class="box-body table-responsive no-padding">
+                        {% for message in get_flashed_messages(category_filter=['success']) %}
+                            <div class="alert alert-success alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×
+                                </button>
+                                <h4><i class="icon fa fa-check"></i> 操作成功</h4>
+                                {{ message }}
+                            </div>
+                        {% endfor %}
                         <table class="table table-hover">
                             <tbody>
                             <tr>
@@ -36,35 +44,30 @@
                                 <th>添加时间</th>
                                 <th>操作事项</th>
                             </tr>
-                            {% for _ in range(10) %}
-                            <tr>
-                                <td>1</td>
-                                <td>环太平洋</td>
-                                <td>
-                                    <img data-src="holder.js/140x64" class="img-responsive center-block" alt="">
-                                </td>
-                                <td>2017-06-01</td>
-                                <td>
-                                    <a class="label label-success">编辑</a>
-                                    &nbsp;
-                                    <a class="label label-danger">删除</a>
-                                </td>
-                            </tr>
+                            {% for v in preview_data %}
+                                <tr>
+                                    <td>{{ v.id }}</td>
+                                    <td>{{ v.title }}</td>
+                                    <td>
+                                        <img src="{{ url_for('static', filename='uploads/'+v.logo) }}"
+                                             style="width: 140px;" class="img-responsive center-block" alt="" px;
+                                    </td>
+                                    <td>{{ v.addtime }}</td>
+                                    <td>
+                                        <a href="{{ url_for("admin.preview_edit", id=v.id) }}" class="label label-success">编辑</a>
+                                        &nbsp;
+                                        <a href="{{ url_for("admin.preview_delete", id=v.id) }}" class="label label-danger">删除</a>
+                                    </td>
+                                </tr>
                             {% endfor %}
                             </tbody>
                         </table>
                     </div>
+                    <!-- 分页 -->
                     <div class="box-footer clearfix">
-                        <ul class="pagination pagination-sm no-margin pull-right">
-                            <li><a href="#">首页</a></li>
-                            <li><a href="#">上一页</a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">下一页</a></li>
-                            <li><a href="#">尾页</a></li>
-                        </ul>
+                        {{ page.pagination(pagination) }}
                     </div>
+                    <!-- 分页 -->
                 </div>
             </div>
         </div>

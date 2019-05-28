@@ -103,18 +103,7 @@ class MovieAddForm(FlaskForm):
         ],
         description=u"封面",
     )
-    # score = SelectField(
-    #     label=u"评分",
-    #     validators=[
-    #         DataRequired(u"请选择评分")
-    #     ],
-    #     coerce=int,
-    #     choices=[(1, "1星"), (1, "2星"), (1, "3星"), (1, "4星"), (1, "5星")],
-    #     description=u"评分",
-    #     render_kw={
-    #         "class": "form-control",
-    #     }
-    # )
+
     score = StringField(
         label="评分",
         validators=[
@@ -196,3 +185,36 @@ class MovieAddForm(FlaskForm):
         # print(score)
         if score < 0 or score > 10:
             raise ValidationError(u"请输入1-10之间的数字")
+
+
+class PreviewForm(FlaskForm):
+    title = StringField(
+        label="预告标题",
+        validators=[
+            DataRequired("请输入预告标题")
+        ],
+        description="预告标题",
+        render_kw={
+            "class": "form-control",
+            "palceholder": "请输入预告标题"
+        }
+    )
+
+    logo = FileField(
+        label="预告封面",
+        validators=[
+            DataRequired("请输上传预告封面")
+        ],
+        description="预告封面",
+        render_kw={
+            "class": "form-control",
+            "palceholder": "请上传预告封面"
+        }
+    )
+    submit = SubmitField(
+        "编辑",
+        render_kw={
+            "class": "btn btn-primary"
+        }
+    )
+

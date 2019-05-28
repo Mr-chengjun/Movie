@@ -21,4 +21,4 @@ class Config(object):
     ADMINS = ['1174948552@qq.com']
 
     # 配置文件上传路径
-    UPLOAD_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), "static/uploads/")
+    UPLOAD_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), "app/static/uploads/")

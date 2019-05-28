@@ -1,7 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3bf0eb50-3a89-46af-aa50-cce94ffb0fff" name="Default Changelist" comment="" />
+    <list default="true" id="3bf0eb50-3a89-46af-aa50-cce94ffb0fff" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/templates/admin/movie_edit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/admin/preview_edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/admin/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/admin/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/admin/movie_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/admin/movie_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/admin/preview_add.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/admin/preview_add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/admin/preview_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/admin/preview_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/201905270006405aa77f6212e14ff5987af375b1fe8f08.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/uploads/20190529004913e08fcf0708954d999cc241815470f4f3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/201905270006405eab5962720744b982018a4d70dfb134.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/uploads/20190529004913e9dea9063b494ac3b3d434e04f48223b.mp4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/201905282035543252e81ee729451c81fd9c4a5a7bab54.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/20190528203554f13636036962450bbcc62f559d057746.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/20190528213402bac7e87547af43cfafcba5f7bad668b5.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/20190528213402df2e777522b84427974f0186c21f179f.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/201905282148069c005f12f84a43528c94f3b48a4d502a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/201905282148069fdc2b40888948fe95f999c371fca313.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/201905282149294f909b148e1548ed868d510cdffb0597.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/2019052821492958bd362121494fd482ced8647c60e5dc.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/201905282151031899352e24dd4230b3df283eaf4927bc.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/201905282151031fa8beff8d2440dfbee69229be227cc5.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/20190528215149897ccd7e8220408aab088c196fc66a37.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/20190528215149cf57a26540954a038373449c8a07b30e.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/20190528215333c893f7542c334ff69881af8c7aec264e.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/20190528215333eac537b0279a4f5b9af63469571ee148.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/20190528215523005578d555794fe7bce5522985ecd7b5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/20190528215523f2af53d0a6844a9abc8642ece410f0bc.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/201905282156020c7dc8037b794566ae8a51612d262346.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/201905282156025fb85d0d1ff9437dbaeb11f5dfaec50e.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/201905282159310640790d69a74a8d9f13c082f9ffbea4.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/20190528215931d8d8f7321666476098b5513e9ba47a01.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/201905282201150fbcb4c3d4f54fb7aa3b338018c2a8f2.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/20190528220115fc8e3dc6fac3423eada2e4d76c8208ef.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/20190528234248574bf65cacfa4a33bde89d6b7bebbbd1.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/20190528234248b5c8e28e2aa04ee5bde072a61e09c173.jpg" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,13 +90,13 @@
         <counts>
           <entry key="bmp" value="1" />
           <entry key="css" value="8" />
-          <entry key="html" value="183" />
-          <entry key="jpg" value="6" />
+          <entry key="html" value="195" />
+          <entry key="jpg" value="8" />
           <entry key="js" value="12" />
           <entry key="map" value="1" />
           <entry key="md" value="6" />
           <entry key="png" value="13" />
-          <entry key="py" value="109" />
+          <entry key="py" value="111" />
           <entry key="txt" value="1" />
           <entry key="数据库迁移" value="3" />
         </counts>
@@ -68,22 +104,22 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="8" />
-          <entry key="HTML" value="183" />
-          <entry key="Image" value="20" />
+          <entry key="HTML" value="195" />
+          <entry key="Image" value="22" />
           <entry key="JavaScript" value="12" />
           <entry key="Markdown" value="6" />
           <entry key="PLAIN_TEXT" value="4" />
-          <entry key="Python" value="109" />
+          <entry key="Python" value="111" />
           <entry key="SourceMap" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="59" />
-          <entry key="html" value="7022" />
+          <entry key="html" value="7580" />
           <entry key="js" value="133" />
           <entry key="md" value="1990" />
-          <entry key="py" value="15788" />
+          <entry key="py" value="17375" />
           <entry key="txt" value="29" />
           <entry key="数据库迁移" value="259" />
         </counts>
@@ -91,11 +127,11 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="59" />
-          <entry key="HTML" value="7022" />
+          <entry key="HTML" value="7580" />
           <entry key="JavaScript" value="133" />
           <entry key="Markdown" value="1990" />
           <entry key="PLAIN_TEXT" value="288" />
-          <entry key="Python" value="15788" />
+          <entry key="Python" value="17375" />
         </counts>
       </usages-collector>
     </session>
@@ -105,46 +141,55 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/admin/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="59">
-              <caret line="101" column="13" selection-start-line="101" selection-start-column="13" selection-end-line="101" selection-end-column="13" />
+            <state relative-caret-position="271">
+              <caret line="360" column="11" lean-forward="true" selection-start-line="360" selection-start-column="11" selection-end-line="360" selection-end-column="11" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
-                <marker date="1559058099453" expanded="true" signature="483:730" ph="..." />
+                <marker date="1559067692362" expanded="true" signature="505:752" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/templates/admin/nav.html">
+        <entry file="file://$PROJECT_DIR$/app/templates/admin/preview_edit.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4593">
-              <caret line="190" column="26" selection-start-line="190" selection-start-column="26" selection-end-line="190" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="38" selection-start-line="38" selection-end-line="38" />
+            <state relative-caret-position="30">
+              <caret line="46" column="99" selection-start-line="46" selection-start-column="99" selection-end-line="46" selection-end-column="99" />
               <folding>
-                <element signature="e#0#40#0" expanded="true" />
+                <element signature="e#2971#2994#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/templates/admin/movie_add.html">
+        <entry file="file://$PROJECT_DIR$/app/templates/admin/preview_list.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1599">
-              <caret line="172" column="12" lean-forward="true" selection-start-line="172" selection-start-column="12" selection-end-line="172" selection-end-column="12" />
+            <state relative-caret-position="262">
+              <caret line="51" column="101" selection-start-line="51" selection-start-column="50" selection-end-line="51" selection-end-column="101" />
               <folding>
-                <element signature="e#4509#4528#0#HTML" expanded="true" />
-                <element signature="e#5044#5063#0#HTML" expanded="true" />
+                <element signature="e#663#684#0#HTML" expanded="true" />
+                <element signature="e#2072#2089#0#HTML" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/templates/admin/movie_edit.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="144" column="23" lean-forward="true" selection-start-line="144" selection-start-column="23" selection-end-line="144" selection-end-column="77" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/templates/admin/preview_add.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="297">
+              <caret line="23" column="19" selection-end-line="73" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -152,7 +197,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-459">
+            <state relative-caret-position="-1107">
               <caret line="52" column="14" selection-start-line="52" selection-start-column="1" selection-end-line="52" selection-end-column="14" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
@@ -163,16 +208,35 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/templates/admin/tag_list.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="324">
+              <caret line="36" column="33" selection-start-line="29" selection-start-column="21" selection-end-line="36" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/admin/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="45" selection-start-line="45" selection-end-line="45" />
+            <state relative-caret-position="90">
+              <caret line="202" column="8" selection-start-line="202" selection-start-column="8" selection-end-line="202" selection-end-column="8" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
-                <marker date="1559051682398" expanded="true" signature="264:269" ph="..." />
-                <marker date="1559051682398" expanded="true" signature="1183:1188" ph="..." />
-                <marker date="1559051682398" expanded="true" signature="1634:1639" ph="..." />
+                <marker date="1559065096862" expanded="true" signature="264:269" ph="..." />
+                <marker date="1559065096862" expanded="true" signature="1183:1188" ph="..." />
+                <marker date="1559065096862" expanded="true" signature="1634:1639" ph="..." />
+                <marker date="1559065096862" expanded="true" signature="4424:4429" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/templates/admin/movie_list.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-758">
+              <caret line="30" column="24" selection-start-line="30" selection-start-column="24" selection-end-line="37" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -204,8 +268,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/templates/home/comments.py" />
-        <option value="$PROJECT_DIR$/app/templates/home/menu.html" />
         <option value="$PROJECT_DIR$/app/templates/home/loginlog.html" />
         <option value="$PROJECT_DIR$/app/templates/home/user.html" />
         <option value="$PROJECT_DIR$/app/templates/home/comments.html" />
@@ -217,8 +279,6 @@
         <option value="$PROJECT_DIR$/app/templates/home/404.html" />
         <option value="$PROJECT_DIR$/app/templates/admin/password.html" />
         <option value="$PROJECT_DIR$/app/templates/admin/index.html" />
-        <option value="$PROJECT_DIR$/app/templates/admin/preview_add.html" />
-        <option value="$PROJECT_DIR$/app/templates/admin/preview_list.html" />
         <option value="$PROJECT_DIR$/app/templates/admin/user_list.py" />
         <option value="$PROJECT_DIR$/app/templates/admin/base.html" />
         <option value="$PROJECT_DIR$/app/templates/admin/user_list.html" />
@@ -242,18 +302,22 @@
         <option value="$PROJECT_DIR$/app/home/views.py" />
         <option value="$PROJECT_DIR$/app/templates/admin/login.html" />
         <option value="$PROJECT_DIR$/app/templates/pagination/admin_pagination.html" />
-        <option value="$PROJECT_DIR$/app/templates/admin/movie_list.html" />
         <option value="$PROJECT_DIR$/app/templates/admin/tag_add.html" />
         <option value="$PROJECT_DIR$/app/templates/admin/tag_edit.html" />
         <option value="$PROJECT_DIR$/app/templates/admin/tag_list.html" />
         <option value="$PROJECT_DIR$/doc/readme.md" />
-        <option value="$PROJECT_DIR$/config.py" />
         <option value="$PROJECT_DIR$/app/templates/admin/movie_add.html" />
         <option value="$PROJECT_DIR$/doc/数据库迁移" />
-        <option value="$PROJECT_DIR$/app/admin/forms.py" />
         <option value="$PROJECT_DIR$/app/models.py" />
         <option value="$PROJECT_DIR$/manager.py" />
         <option value="$PROJECT_DIR$/app/__init__.py" />
+        <option value="$PROJECT_DIR$/app/templates/admin/movie_list.html" />
+        <option value="$PROJECT_DIR$/config.py" />
+        <option value="$PROJECT_DIR$/app/templates/admin/movie_edit.html" />
+        <option value="$PROJECT_DIR$/app/admin/forms.py" />
+        <option value="$PROJECT_DIR$/app/templates/admin/preview_add.html" />
+        <option value="$PROJECT_DIR$/app/templates/admin/preview_list.html" />
+        <option value="$PROJECT_DIR$/app/templates/admin/preview_edit.html" />
         <option value="$PROJECT_DIR$/app/admin/views.py" />
       </list>
     </option>
@@ -273,8 +337,8 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="15" />
-    <option name="y" value="-24" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
     <option name="width" value="697" />
     <option name="height" value="735" />
   </component>
@@ -319,12 +383,20 @@
               <item name="movieProject" type="b2602c69:ProjectViewProjectNode" />
               <item name="movieProject" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="movieProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="movieProject" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="movieProject" type="b2602c69:ProjectViewProjectNode" />
               <item name="movieProject" type="462c0819:PsiDirectoryNode" />
-              <item name="doc" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -341,16 +413,16 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\movieProject\app\static\base\images" />
+      <recent name="E:\movieProject\app\templates\home" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\movieProject\app\static" />
       <recent name="E:\movieProject\app\templates\home" />
       <recent name="E:\movieProject\app\static\base\images" />
       <recent name="E:\movieProject\app\static\anim" />
       <recent name="E:\movieProject\app\templates\home\email" />
-      <recent name="E:\movieProject\app\templates\email" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\movieProject\app\static\base\images" />
-      <recent name="E:\movieProject\app\templates\home" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -478,8 +550,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16641453" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15885022" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -493,7 +566,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.65353036" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.29064038" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.33442622" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -501,6 +574,29 @@
       <window_info anchor="right" id="SciView" order="3" />
       <window_info anchor="right" id="Database" order="4" weight="0.3880484" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18381241" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3295082" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.33442622" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4622951" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.17898194" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.33442622" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Database" order="4" weight="0.3880484" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -509,48 +605,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/static/tpl/3-admin/role_add.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="24" column="9" lean-forward="true" selection-start-line="22" selection-start-column="7" selection-end-line="24" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/tpl/3-admin/auth_add.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="324" column="18" lean-forward="true" selection-start-line="292" selection-start-column="8" selection-end-line="324" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/tpl/3-admin/auth_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="347" column="58" lean-forward="true" selection-start-line="347" selection-start-column="58" selection-end-line="347" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/admin/auth_add.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-216">
-          <caret line="25" column="107" selection-start-line="25" selection-start-column="107" selection-end-line="25" selection-end-column="107" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/tpl/3-admin/admin_add.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="292" column="6" selection-start-line="292" selection-start-column="6" selection-end-line="336" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/tpl/3-admin/admin_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="292" column="8" selection-start-line="292" selection-start-column="8" selection-end-line="358" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/admin/admin_list.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="398">
@@ -610,13 +664,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/admin/movie_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/static/tpl/3-admin/tag_add.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="243">
@@ -647,13 +694,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
           <caret line="99" column="9" selection-start-line="99" selection-start-column="4" selection-end-line="99" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="23" column="90" selection-start-line="23" selection-start-column="90" selection-end-line="23" selection-end-column="90" />
         </state>
       </provider>
     </entry>
@@ -775,20 +815,6 @@
     <entry file="file://$PROJECT_DIR$/app/templates/home/search.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/admin/tag_edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="4" column="23" lean-forward="true" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/admin/tag_add.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="20" column="28" selection-start-line="20" selection-start-column="28" selection-end-line="27" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/doc/数据库迁移">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -796,60 +822,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/admin/tag_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="1" column="38" selection-start-line="1" selection-start-column="22" selection-end-line="1" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/admin/comment_list.html">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-459">
-          <caret line="52" column="14" selection-start-line="52" selection-start-column="1" selection-end-line="52" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-            <marker date="1559055641645" expanded="true" signature="6345:6403" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/admin/movie_add.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1599">
-          <caret line="172" column="12" lean-forward="true" selection-start-line="172" selection-start-column="12" selection-end-line="172" selection-end-column="12" />
-          <folding>
-            <element signature="e#4509#4528#0#HTML" expanded="true" />
-            <element signature="e#5044#5063#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="38" selection-start-line="38" selection-end-line="38" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/admin/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-            <marker date="1559051682398" expanded="true" signature="264:269" ph="..." />
-            <marker date="1559051682398" expanded="true" signature="1183:1188" ph="..." />
-            <marker date="1559051682398" expanded="true" signature="1634:1639" ph="..." />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/admin/nav.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -858,13 +832,131 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/admin/tag_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="36" column="33" selection-start-line="29" selection-start-column="21" selection-end-line="36" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/uploads/20190528234248b5c8e28e2aa04ee5bde072a61e09c173.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="23" column="78" selection-start-line="23" selection-start-column="78" selection-end-line="23" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1107">
+          <caret line="52" column="14" selection-start-line="52" selection-start-column="1" selection-end-line="52" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+            <marker date="1559055641645" expanded="true" signature="6345:6403" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/admin/tag_add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="452">
+          <caret line="20" column="28" selection-start-line="20" selection-start-column="28" selection-end-line="27" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/admin/movie_add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="27" column="40" lean-forward="true" selection-start-line="20" selection-start-column="27" selection-end-line="27" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/admin/tag_edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="35" column="40" selection-start-line="28" selection-start-column="28" selection-end-line="35" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/admin/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="202" column="8" selection-start-line="202" selection-start-column="8" selection-end-line="202" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+            <marker date="1559065096862" expanded="true" signature="264:269" ph="..." />
+            <marker date="1559065096862" expanded="true" signature="1183:1188" ph="..." />
+            <marker date="1559065096862" expanded="true" signature="1634:1639" ph="..." />
+            <marker date="1559065096862" expanded="true" signature="4424:4429" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/uploads/20190529015342ee91b7e4737f450bbf8b9b99df7cb82e.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/admin/movie_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-758">
+          <caret line="30" column="24" selection-start-line="30" selection-start-column="24" selection-end-line="37" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/admin/movie_edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="144" column="23" lean-forward="true" selection-start-line="144" selection-start-column="23" selection-end-line="144" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/admin/preview_add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="23" column="19" selection-end-line="73" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/admin/preview_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="51" column="101" selection-start-line="51" selection-start-column="50" selection-end-line="51" selection-end-column="101" />
+          <folding>
+            <element signature="e#663#684#0#HTML" expanded="true" />
+            <element signature="e#2072#2089#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/admin/preview_edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="46" column="99" selection-start-line="46" selection-start-column="99" selection-end-line="46" selection-end-column="99" />
+          <folding>
+            <element signature="e#2971#2994#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/admin/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="59">
-          <caret line="101" column="13" selection-start-line="101" selection-start-column="13" selection-end-line="101" selection-end-column="13" />
+        <state relative-caret-position="271">
+          <caret line="360" column="11" lean-forward="true" selection-start-line="360" selection-start-column="11" selection-end-line="360" selection-end-column="11" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
-            <marker date="1559058099453" expanded="true" signature="483:730" ph="..." />
+            <marker date="1559067692362" expanded="true" signature="505:752" ph="..." />
           </folding>
         </state>
       </provider>
