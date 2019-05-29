@@ -12,6 +12,7 @@ from functools import wraps
 
 
 # 验证登录函数
+# 文件名称为：创建时间+uuid+文件的后缀，这样来唯一标识一个文件
 # def admin_login_required(f):
 #     @wraps(f)
 #     def decorated_function(*args, **kwargs):
