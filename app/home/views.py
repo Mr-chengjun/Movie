@@ -100,8 +100,8 @@ def play():
 # 修改密码请求
 @home.route('/reset_password_request/', methods=['GET', 'POST'])
 def reset_password_request():
-    if current_user.is_authenticated:
-        return redirect(url_for('home.index'))
+    # if current_user.is_authenticated:
+    #     return redirect(url_for('home.index'))
     form = ResetPasswordRequestForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
@@ -119,8 +119,8 @@ def reset_password_request():
 # 修改密码
 @home.route('/reset_password/<token>/', methods=['GET', 'POST'])
 def reset_password(token):
-    if current_user.is_authenticated:
-        return redirect(url_for('home.index'))
+    # if current_user.is_authenticated:
+    #     return redirect(url_for('home.index'))
     user = User.verify_reset_password_token(token)
     if not user:
         return redirect(url_for('home.index'))

@@ -50,7 +50,10 @@ class RegisterForm(FlaskForm):
 
 
 class ResetPasswordRequestForm(FlaskForm):
-    email = StringField(u'邮箱', validators=[DataRequired(), Email(message='邮箱格式不正确')])
+    email = StringField(u'邮箱',
+                        validators=[
+                            DataRequired(), Email(message='邮箱格式不正确')
+                        ])
     submit = SubmitField('发送邮件')
 
 

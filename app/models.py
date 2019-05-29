@@ -49,12 +49,6 @@ class User(db.Model, UserMixin):
         return User.query.get(id)
 
 
-# 用户的登录验证,current_user时候使用
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
-
-
 # 会员登录日志
 class UserLog(db.Model):
     __tablename__ = "userlog"
@@ -65,6 +59,12 @@ class UserLog(db.Model):
 
     def __repr__(self):
         return "<UserLog %r>" % self.id
+
+
+# 用户的登录验证,current_user时候使用
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 
 # 标签数据模型
@@ -88,8 +88,8 @@ class Movie(db.Model):
     info = db.Column(db.Text)  # 简介
     logo = db.Column(db.String(255), unique=True)  # 封面
     score = db.Column(db.Float(4))  # 评分
-    playnum = db.Column(db.BigInteger)  # 播放量
-    commentnum = db.Column(db.BigInteger)  # 评论量
+    playnum = db.Column(db.BigInteger, default=0)  # 播放量
+    commentnum = db.Column(db.BigInteger, default=0)  # 评论量
     tag_id = db.Column(db.Integer, db.ForeignKey("tag.id"))  # 所属标签
     area = db.Column(db.String(255))  # 上映地区
     release_time = db.Column(db.Date)  # 上映时间
@@ -184,6 +184,12 @@ class Admin(db.Model, UserMixin):
 
     def check_password(self, password):
         return check_password_hash(self.pwd, password)
+
+
+# 用户的登录验证,current_user时候使用
+@login_manager.user_loader
+def load_admin(user_id):
+    return Admin.query.get(int(user_id))
 
 
 # 管理员登录日志

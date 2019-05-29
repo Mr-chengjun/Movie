@@ -20,5 +20,8 @@ class Config(object):
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD') or "jpqvwnzeoequfeed"
     ADMINS = ['1174948552@qq.com']
 
+    # 配置分页时候一页显示多少调数据
+    PER_PAGE = 10
+
     # 配置文件上传路径
     UPLOAD_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), "app/static/uploads/")

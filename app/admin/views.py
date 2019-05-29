@@ -1,7 +1,7 @@
 from . import admin
 from flask import render_template, request, redirect, url_for, flash, session
 from app.admin.forms import LoginForm, TagForm, MovieAddForm, PreviewForm
-from app.models import Admin, Tag, Movie, Preview
+from app.models import Admin, Tag, Movie, Preview, User, Comment, Moviecol
 from flask_login import login_user, logout_user, login_required
 from werkzeug.urls import url_parse
 from app import db
@@ -32,6 +32,7 @@ def change_filename(filename):
 # 后台主页
 @admin.route("/")
 # @admin_login_required
+@login_required
 def index():
     return render_template("admin/index.html")
 
@@ -60,10 +61,9 @@ def login():
 
 # 后台登出
 @admin.route("/logout/")
-# @admin_login_required
+@login_required
 def logout():
     logout_user()
-    session.pop("name", None)
     return redirect(url_for("admin.login"))
 
 
@@ -99,7 +99,7 @@ def tag_add():
 def tag_list():
     page_index = request.args.get('page', 1, type=int)
     # 实现分页信息
-    pagination = Tag.query.order_by(Tag.addtime.desc()).paginate(page=page_index, per_page=1)
+    pagination = Tag.query.order_by(Tag.addtime.desc()).paginate(page=page_index, per_page=Config.PER_PAGE)
     # tag的信息
     tag_data = pagination.items
     return render_template("admin/tag_list.html", tag_data=tag_data, pagination=pagination)
@@ -143,6 +143,10 @@ def movie_add():
     form = MovieAddForm()
     if form.validate_on_submit():
         data = form.data
+        movie = Movie.query.filter_by(title=data["title"]).first()
+        if movie:
+            flash("该电影已经存在", "error")
+            return redirect(url_for("admin.movie"))
         # 上传的电影的文件，url
         movie_url = secure_filename(form.url.data.filename)
         cover_url = secure_filename(form.cover.data.filename)
@@ -182,7 +186,7 @@ def movie_list():
         Tag.id == Movie.tag_id
     ).order_by(
         Movie.addtime.desc()
-    ).paginate(page=page_index, per_page=1)
+    ).paginate(page=page_index, per_page=Config.PER_PAGE)
     # 电影的信息
     movie_data = pagination.items
     return render_template("admin/movie_list.html", movie_data=movie_data, pagination=pagination)
@@ -276,7 +280,7 @@ def preview_add():
 def preview_list():
     page_index = request.args.get('page', 1, type=int)
     # 实现分页信息
-    pagination = Preview.query.order_by(Preview.addtime.desc()).paginate(page=page_index, per_page=1)
+    pagination = Preview.query.order_by(Preview.addtime.desc()).paginate(page=page_index, per_page=Config.PER_PAGE)
     # 电影的信息
     preview_data = pagination.items
     return render_template("admin/preview_list.html", preview_data=preview_data, pagination=pagination)
@@ -300,7 +304,7 @@ def preview_edit(id=None):
     preview = Preview.query.get_or_404(int(id))
     if request.method == "GET":
         form.title.data = preview.title
-        form.logo.validators =[]
+        form.logo.validators = []
     if form.validate_on_submit():
         data = form.data
         # 更改了图片
@@ -312,36 +316,101 @@ def preview_edit(id=None):
         db.session.add(preview)
         db.session.commit()
         flash("修改预告成功", "success")
-        return redirect(url_for("admin.preview_edit",id=id))
+        return redirect(url_for("admin.preview_edit", id=id))
     return render_template("admin/preview_edit.html", form=form, preview=preview)
 
 
 # 会员列表页
 @admin.route("/user/list/")
 # @admin_login_required
+@login_required
 def user_list():
-    return render_template("admin/user_list.html")
+    page_index = request.args.get('page', 1, type=int)
+    # 实现分页信息
+    pagination = User.query.order_by(User.addtime.desc()).paginate(page=page_index, per_page=Config.PER_PAGE)
+    # 电影的信息
+    user_data = pagination.items
+    return render_template("admin/user_list.html", user_data=user_data, pagination=pagination)
 
 
 # 查看会员详细信息页面
-@admin.route("/user/view/")
+@admin.route("/user/view/<int:id>")
 # @admin_login_required
-def user_view():
-    return render_template("admin/user_view.html")
+def user_view(id):
+    user = User.query.get_or_404(id)
+    return render_template("admin/user_view.html", user=user)
+
+
+# 删除会员
+@admin.route("/user/delete/<int:id>/")
+def user_delete(id=None):
+    user = User.query.get_or_404(int(id))
+    db.session.delete(user)
+    db.session.commit()
+    flash("删除用户成功", "success")
+    return redirect(url_for("admin.user_list"))
 
 
 # 评论列表页面
 @admin.route("/comment/list/")
 # @admin_login_required
+@login_required
 def comment_list():
-    return render_template("admin/comment_list.html")
+    page_index = request.args.get('page', 1, type=int)
+    # 实现分页信息
+    pagination = Comment.query.join(
+        Movie
+    ).join(
+        User
+    ).filter(
+        Movie.id == Comment.movie_id,
+        User.id == Comment.user_id
+    ).order_by(Comment.addtime.desc()
+               ).paginate(page=page_index, per_page=Config.PER_PAGE)
+    # 电影的信息
+    comm_data = pagination.items
+    return render_template("admin/comment_list.html", comm_data=comm_data, pagination=pagination)
+
+
+# 删除评论
+@admin.route("/comment/delete/<int:id>/")
+def comment_delete(id=None):
+    comment = Comment.query.get_or_404(int(id))
+    db.session.delete(comment)
+    db.session.commit()
+    flash("删除评论成功", "success")
+    return redirect(url_for("admin.comment_list"))
 
 
 # 收藏电影列表页面
 @admin.route("/movie/collection/list")
 # @admin_login_required
+@login_required
 def moviecol_list():
-    return render_template('admin/moviecol_list.html')
+    page_index = request.args.get('page', 1, type=int)
+    # 实现分页信息
+    pagination = Moviecol.query.join(
+        Movie
+    ).join(
+        User
+    ).filter(
+        Movie.id == Moviecol.movie_id,
+        User.id == Moviecol.user_id
+    ).order_by(Moviecol.addtime.desc()
+               ).paginate(page=page_index, per_page=Config.PER_PAGE)
+    # 电影的信息
+    mcl_data = pagination.items
+    return render_template("admin/moviecol_list.html", mcl_data=mcl_data, pagination=pagination)
+
+
+# 删除评论
+@admin.route("/moviecol/delete/<int:id>/")
+def moviecol_delete(id=None):
+    moviecol = Moviecol.query.get_or_404(int(id))
+    db.session.delete(moviecol)
+    db.session.commit()
+    flash("删除收藏成功", "success")
+    return redirect(url_for("admin.moviecol_list"))
 
 
 # 操作日志列表页面

@@ -1,5 +1,5 @@
 {% extends "admin/base.html" %}
-
+{% import "pagination/admin_pagination.html" as page %}
 {% block content %}
     <section class="content-header">
         <h1>微电影管理系统</h1>
@@ -36,33 +36,25 @@
                                 <th>添加时间</th>
                                 <th>操作事项</th>
                             </tr>
-                            {% for _ in range(10) %}
+                            {% for m in mcl_data %}
                             <tr>
-                                <td>1</td>
-                                <td>环太平洋</td>
-                                <td>张小明</td>
-                                <td>2017-06-01</td>
+                                <td>{{ m.id }}</td>
+                                <td>{{ m.movie.title }}</td>
+                                <td>{{ m.user.name }}</td>
+                                <td>{{ m.addtime }}</td>
                                 <td>
-                                    <a class="label label-success">编辑</a>
-                                    &nbsp;
-                                    <a class="label label-danger">删除</a>
+                                    <a href="{{ url_for("admin.moviecol_delete", id=m.id) }}" class="label label-danger">删除</a>
                                 </td>
                             </tr>
                             {% endfor %}
                             </tbody>
                         </table>
                     </div>
+                     <!-- 分页 -->
                     <div class="box-footer clearfix">
-                        <ul class="pagination pagination-sm no-margin pull-right">
-                            <li><a href="#">首页</a></li>
-                            <li><a href="#">上一页</a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">下一页</a></li>
-                            <li><a href="#">尾页</a></li>
-                        </ul>
+                        {{ page.pagination(pagination) }}
                     </div>
+                    <!-- 分页 -->
                 </div>
             </div>
         </div>
