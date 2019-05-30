@@ -35,6 +35,7 @@ def admin_login_required(f):
 
 
 # 修改文件名称
+# 文件名称为：创建时间+uuid+文件的后缀，这样来唯一标识一个文件
 def change_filename(filename):
     fileinfo = os.path.splitext(filename)
     filename = datetime.datetime.now().strftime("%Y%m%d%H%M%S") + str(uuid.uuid4().hex) + fileinfo[-1]

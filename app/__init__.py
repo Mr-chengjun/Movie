@@ -17,15 +17,19 @@ mail = Mail()
 dropzone = Dropzone()
 
 migrate = Migrate()
-
+# 设置安全级别
 login_manager.session_protection = "strong"
+
 # login_manager.login_view = "admin.login"
 login_manager.blueprint_login_views = {
     "home": "home.login",
     "admin": "admin.login"
 }
-
+# 设置登录视图，如果用户未登录，则会跳转到此视图
+# login_manager.login_view = "admin.login"
+# 设置闪现错误消息的类别
 login_manager.login_message_category = "warning"
+# 设置提示消息，默认的错误消息是：Please log in to access this page
 login_manager.login_message = u"请先登录"
 
 
