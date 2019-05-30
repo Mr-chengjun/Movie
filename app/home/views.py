@@ -6,14 +6,15 @@ from .forms import LoginForm, RegisterForm, ResetPasswordRequestForm, ResetPassw
 from .email import send_password_reset_email
 from app import redis_store, db
 from flask import session
-from flask_login import current_user
 from flask_login import login_user, logout_user, login_required
+# from app.libs.flask_login import login_user, logout_user, login_required
 from app.models import User, UserLog
 import uuid  # 唯一标识符
 
 
 # 主页
 @home.route("/")
+@login_required
 def index():
     return render_template("home/index.html")
 
@@ -70,7 +71,7 @@ def login():
         # 记录登录日志
         userlog = UserLog(
             user_id=user.id,
-            ip=request.remote_addr
+            ip=request.remote_addr  # 获取ip
         )
         db.session.add(userlog)
         db.session.commit()

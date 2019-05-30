@@ -19,7 +19,12 @@ dropzone = Dropzone()
 migrate = Migrate()
 
 login_manager.session_protection = "strong"
-login_manager.login_view = "admin.login"
+# login_manager.login_view = "admin.login"
+login_manager.blueprint_login_views = {
+    "home": "home.login",
+    "admin": "admin.login"
+}
+
 login_manager.login_message_category = "warning"
 login_manager.login_message = u"请先登录"
 

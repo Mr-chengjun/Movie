@@ -5,7 +5,7 @@ from flask_login import UserMixin
 from app import login_manager
 from time import time
 import jwt
-from flask import current_app
+from flask import current_app, request
 
 
 # 会员数据模型
@@ -61,10 +61,10 @@ class UserLog(db.Model):
         return "<UserLog %r>" % self.id
 
 
-# 用户的登录验证,current_user时候使用
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
+# # 用户的登录验证,current_user时候使用
+# @login_manager.user_loader
+# def load_user(user_id, endpoint="user"):
+#     return User.query.get(int(user_id))
 
 
 # 标签数据模型
@@ -188,8 +188,15 @@ class Admin(db.Model, UserMixin):
 
 # 用户的登录验证,current_user时候使用
 @login_manager.user_loader
-def load_admin(user_id):
-    return Admin.query.get(int(user_id))
+def load_user(user_id):
+    print("models:", request.endpoint)
+    print("models:", request.blueprint)
+    if request.blueprint == "admin":
+        print("models 执行了Admin查询")
+        return Admin.query.get(int(user_id))
+    else:
+        print("models 执行了User查询")
+        return User.query.get(int(user_id))
 
 
 # 管理员登录日志

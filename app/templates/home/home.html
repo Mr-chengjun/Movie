@@ -65,7 +65,7 @@
                             class="glyphicon glyphicon-log-out"></span>&nbsp;退出</a>
                 </li>
                 <li>
-                    <a class="curlink" href="{{ url_for("home.user") }}"><span class="glyphicon glyphicon-user"></span>&nbsp;会员</a>
+                    <a class="curlink" href="{{ url_for("home.user") }}"><span class="glyphicon glyphicon-user"></span>&nbsp;{{ current_user.name }}</a>
                 </li>
             </ul>
         </div>

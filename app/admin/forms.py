@@ -75,7 +75,7 @@ class MovieAddForm(FlaskForm):
         description=u"电影名称",
         render_kw={
             "class": "form-control",
-            "palceholder": "请输入片名"
+            "placeholder": "请输入片名"
         }
     )
     url = FileField(
@@ -112,7 +112,7 @@ class MovieAddForm(FlaskForm):
         description=u"评分",
         render_kw={
             "class": "form-control",
-            "palceholder": "请输入评分"
+            "placeholder": "请输入评分"
         }
 
     )
@@ -139,7 +139,7 @@ class MovieAddForm(FlaskForm):
         description=u"地区",
         render_kw={
             "class": "form-control",
-            "palceholder": "请输入地区"
+            "placeholder": "请输入地区"
         }
     )
     length = StringField(
@@ -150,7 +150,7 @@ class MovieAddForm(FlaskForm):
         description=u"片长",
         render_kw={
             "class": "form-control",
-            "palceholder": "请输入片长"
+            "placeholder": "请输入片长"
         }
     )
     release_time = StringField(
@@ -161,7 +161,7 @@ class MovieAddForm(FlaskForm):
         description=u"上映时间",
         render_kw={
             "class": "form-control",
-            "palceholder": "请选择上映时间",
+            "placeholder": "请选择上映时间",
             "id": "input_release_time"
         }
     )
@@ -196,7 +196,7 @@ class PreviewForm(FlaskForm):
         description="预告标题",
         render_kw={
             "class": "form-control",
-            "palceholder": "请输入预告标题"
+            "placeholder": "请输入预告标题"
         }
     )
 
@@ -208,7 +208,7 @@ class PreviewForm(FlaskForm):
         description="预告封面",
         render_kw={
             "class": "form-control",
-            "palceholder": "请上传预告封面"
+            "placeholder": "请上传预告封面"
         }
     )
     submit = SubmitField(
@@ -218,3 +218,76 @@ class PreviewForm(FlaskForm):
         }
     )
 
+
+class PassWordForm(FlaskForm):
+    old_password = PasswordField(
+        label="旧密码",
+        validators=[
+            DataRequired("请输入旧密码")
+        ],
+        description="旧密码",
+        render_kw={
+            "class": "form-control",
+            "placeholder": u"请输入旧密码"
+        }
+    )
+    new_password = PasswordField(
+        label="新密码",
+        validators=[
+            DataRequired("请输入新密码")
+        ],
+        description="新密码",
+        render_kw={
+            "class": "form-control",
+            "placeholder": u"请输入新密码",
+        }
+    )
+    submit = SubmitField(
+        "修改",
+        render_kw={
+            "class": "btn btn-primary"
+        }
+    )
+
+    def validate_old_password(self, field):
+        from flask import session
+        pwd = field.data
+        name = session["admin"]
+        admin = Admin.query.filter_by(
+            name=name
+        ).first()
+        if not admin.check_password(pwd):
+            raise ValidationError("旧密码错误")
+
+
+class AuthForm(FlaskForm):
+    name = StringField(
+        label=u"权限名称",
+        validators=[
+            DataRequired(message=u"请输入权限名称")
+        ],
+        description=u"权限名称",
+        render_kw={
+            "class": "form-control",
+            "id": "input_name",
+            "placeholder": u"请输入权限名称"
+        }
+    )
+    url = StringField(
+        label=u"权限地址",
+        validators=[
+            DataRequired(message=u"请输入权限地址")
+        ],
+        description=u"权限地址",
+        render_kw={
+            "class": "form-control",
+            "id": "input_name",
+            "placeholder": u"请输入权限地址"
+        }
+    )
+    submit = SubmitField(
+        label=u"添加",
+        render_kw={
+            "class": "btn btn-primary"
+        }
+    )
