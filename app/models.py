@@ -144,7 +144,7 @@ class Auth(db.Model):
     __tablename__ = "auth"
     id = db.Column(db.Integer, primary_key=True)  # 编号
     name = db.Column(db.String(100), unique=True)  # 名称
-    url = db.Column(db.String(255), unique=True)  # 地址
+    url = db.Column(db.String(255), unique=True)  # 权限的地址
     addtime = db.Column(db.DateTime, index=True, default=datetime.now)  # 添加时间
 
     def __repr__(self):
@@ -170,7 +170,7 @@ class Admin(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)  # 编号
     name = db.Column(db.String(100), unique=True)  # 管理员昵称
     pwd = db.Column(db.String(100))  # 管理员密码
-    is_super = db.Column(db.SmallInteger)  # 是否为超级管理员，0为超级管理员
+    is_super = db.Column(db.SmallInteger)  # 是否为超级管理员，0为超级管理员 1为普通
     role_id = db.Column(db.Integer, db.ForeignKey("role.id"))  # 所属角色
     addtime = db.Column(db.DateTime, index=True, default=datetime.now)  # 添加时间
     adminlogs = db.relationship("AdminLog", backref="admin")  # 管理员登录日志外键关系关联
@@ -189,13 +189,13 @@ class Admin(db.Model, UserMixin):
 # 用户的登录验证,current_user时候使用
 @login_manager.user_loader
 def load_user(user_id):
-    print("models:", request.endpoint)
-    print("models:", request.blueprint)
+    # print("models:", request.endpoint)
+    # print("models:", request.blueprint)
     if request.blueprint == "admin":
-        print("models 执行了Admin查询")
+        # print("models 执行了Admin查询")
         return Admin.query.get(int(user_id))
     else:
-        print("models 执行了User查询")
+        # print("models 执行了User查询")
         return User.query.get(int(user_id))
 
 

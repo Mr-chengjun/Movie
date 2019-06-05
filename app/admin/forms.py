@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
-from wtforms import SubmitField, PasswordField, StringField, TextAreaField, FileField, SelectField
-from wtforms.validators import DataRequired, ValidationError
-from app.models import Admin, Tag
+from wtforms import SubmitField, PasswordField, StringField, TextAreaField, FileField, SelectField, SelectMultipleField
+from wtforms.validators import DataRequired, ValidationError, EqualTo
+from app.models import Admin, Tag, Auth, Role
 
 
 # 后台登录表单
@@ -172,7 +172,7 @@ class MovieAddForm(FlaskForm):
         }
     )
 
-    ''' SelectField字段关联数据库，在此初始化选项value值(其中User，ResourcePool 为数据库模型) '''
+    ''' SelectField字段关联数据库，在此初始化选项value值(其中Tag 为数据库模型) '''
 
     def __init__(self, *args, **kwargs):
         super(MovieAddForm, self).__init__(*args, **kwargs)
@@ -291,3 +291,101 @@ class AuthForm(FlaskForm):
             "class": "btn btn-primary"
         }
     )
+
+
+class RoleForm(FlaskForm):
+    name = StringField(
+        label=u"角色名称",
+        validators=[
+            DataRequired(u"请输入角色名称")
+        ],
+        render_kw={
+            "class": "form-control",
+            "placeholder": u"请输入角色名称",
+            # "required": False
+        }
+    )
+
+    auths = SelectMultipleField(
+        label=u"权限列表",
+        validators=[
+            DataRequired(message=u"请选择权限列表")
+        ],
+        coerce=int,
+        render_kw={
+            "class": "form-control",
+            # "required": False
+        }
+    )
+    submit = SubmitField(
+        label=u"添加",
+        render_kw={
+            "class": "btn btn-primary"
+        }
+    )
+    ''' SelectField字段关联数据库，在此初始化选项value值(其中Auth为数据库模型) '''
+
+    def __init__(self, *args, **kwargs):
+        super(RoleForm, self).__init__(*args, **kwargs)
+        self.auths.choices = [(auth.id, auth.name) for auth in
+                              Auth.query.all()]
+
+
+class AdminForm(FlaskForm):
+    name = StringField(
+        label=u"管理员名称",
+        validators=[
+            DataRequired(message=u"请输入管理员名称")
+        ],
+        description=u"管理员名称",
+        render_kw={
+            "class": "form-control",
+            "placeholder": u"请输入管理员名称"
+        }
+    )
+    password = PasswordField(
+        label=u"管理员密码",
+        validators=[
+            DataRequired(u"请输入管理员密码")
+        ],
+        description=u"管理员密码",
+        render_kw={
+            "class": "form-control",
+            "placeholder": "请输入管理员密码",
+        }
+    )
+    rep_password = PasswordField(
+        label=u"管理员重复密码",
+        validators=[
+            DataRequired(u"管理员重复密码"),
+            EqualTo('password', message=u"两次密码不一致")
+        ],
+        description=u"管理员重复密码",
+        render_kw={
+            "class": "form-control",
+            "placeholder": "管理员重复密码",
+        }
+    )
+    role_id = SelectField(
+        label=u"所属角色",
+        validators=[
+            DataRequired(u"请选择所属角色")
+        ],
+        coerce=int,
+        choices=[],
+        render_kw={
+            "class": "form-control"
+        }
+    )
+    submit = SubmitField(
+        label=u"添加",
+        render_kw={
+            "class": "btn btn-primary"
+        }
+    )
+    ''' SelectField字段关联数据库，在此初始化选项value值(其中Auth为数据库模型) '''
+
+    def __init__(self, *args, **kwargs):
+        super(AdminForm, self).__init__(*args, **kwargs)
+        self.role_id.choices = [(role.id, role.name) for role in
+                              Role.query.all()]

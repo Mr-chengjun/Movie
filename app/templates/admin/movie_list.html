@@ -14,14 +14,19 @@
             <div class="col-md-12">
                 <div class="box box-primary">
                     <div class="box-header">
-                        <h3 class="box-title">电影列表</h3>
+                        {% if "search" in request.endpoint %}
+                            <h3 class="box-title">共搜到'{{ movie_data|length }}'条关于'{{ keywords }}'的电影</h3>
+                        {% else %}
+                            <h3 class="box-title">电影列表</h3>
+                        {% endif %}
                         <div class="box-tools">
                             <div class="input-group input-group-sm" style="width: 150px;">
-                                <input type="text" name="table_search" class="form-control pull-right"
+                                <input id="search_key" type="text" name="table_search" class="form-control pull-right"
                                        placeholder="请输入关键字...">
 
                                 <div class="input-group-btn">
-                                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i>
+                                    <button id="search_btn" type="submit" class="btn btn-default"><i
+                                            class="fa fa-search"></i>
                                     </button>
                                 </div>
                             </div>
@@ -64,7 +69,8 @@
                                     <td>
                                         <a href="{{ url_for('admin.movie_edit',id=v.id) }}" class="label label-success">编辑</a>
                                         &nbsp;
-                                        <a href="{{ url_for('admin.movie_delete',id=v.id) }}" class="label label-danger">删除</a>
+                                        <a href="{{ url_for('admin.movie_delete',id=v.id) }}"
+                                           class="label label-danger">删除</a>
                                     </td>
                                 </tr>
                             {% endfor %}
@@ -86,6 +92,10 @@
         $(document).ready(function () {
             $("#nav-3").addClass("active");
             $("#nav-3-2").addClass("active");
+            $("#search_btn").click(function () {
+                var key = $("#search_key").val();
+                location.href = "{{ url_for('admin.search_movie') }}?keywords=" + key;
+            });
         });
     </script>
 {% endblock %}

@@ -11,11 +11,13 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='base/css/bootstrap-movie.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='base/css/animate.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='anim/css/page.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/dist/css/AdminLTE.min.css') }}">
     {% block css %}{% endblock %}
     <style>
         .navbar-brand > img {
             display: inline;
         }
+
         .media {
             padding: 3px;
             border: 1px solid #ccc
@@ -35,7 +37,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a href="{{ url_for('home.index') }}" class="navbar-brand" style="width:250px;">
-                <img src="{{ url_for('static', filename='base/images/logo2.png') }}" style="height:30px;">&nbsp;电影系统
+                <img src="{{ url_for('static', filename='base/images/logo.bmp') }}" style="height:30px;">&nbsp;电影系统
             </a>
         </div>
         <!--小屏幕导航按钮和logo-->
@@ -43,9 +45,11 @@
         <div class="navbar-collapse collapse">
             <form class="navbar-form navbar-left" role="search" style="margin-top:18px;">
                 <div class="form-group input-group">
-                    <input type="text" class="form-control" placeholder="请输入电影名！">
+                    <input id="search-key" type="text" class="form-control" placeholder="请输入电影名...">
                     <span class="input-group-btn">
-                        <a class="btn btn-default" href="{{ url_for("home.search") }}"><span class="glyphicon glyphicon-search"></span>&nbsp;搜索</a>
+                        <a id="search-btn" class="btn btn-default">
+                            <span class="glyphicon glyphicon-search"></span>&nbsp;搜索
+                        </a>
                     </span>
                 </div>
             </form>
@@ -58,19 +62,55 @@
                             class="glyphicon glyphicon-log-in"></span>&nbsp;登录</a>
                 </li>
                 <li>
-                    <a class="curlink" href="{{ url_for("home.register") }}"><span class="glyphicon glyphicon-plus"></span>&nbsp;注册</a>
+                    <a class="curlink" href="{{ url_for("home.register") }}"><span
+                            class="glyphicon glyphicon-plus"></span>&nbsp;注册</a>
                 </li>
-                <li>
-                    <a class="curlink" href="{{ url_for("home.logout") }}"><span
-                            class="glyphicon glyphicon-log-out"></span>&nbsp;退出</a>
-                </li>
-                <li>
-                    <a class="curlink" href="{{ url_for("home.user") }}"><span class="glyphicon glyphicon-user"></span>&nbsp;{{ current_user.name }}</a>
-                </li>
+                {% if current_user.is_authenticated %}
+                    <li class="dropdown user user-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            {% if current_user.face %}
+                                <img style="margin-top: 4px;"
+                                     src="{{ url_for('static', filename='uploads/userfaces/'+current_user.face) }}"
+                                     class="user-image" alt="UserFace">
+                            {% else %}
+                                <img style="margin-top: 4px;"
+                                     src="{{ url_for('static', filename='admin/dist/img/user2-160x160.jpg') }}"
+                                     class="user-image" alt="UserFace">
+                            {% endif %}
+                            <span class="hidden-xs">{{ current_user.name }}</span>
+                        </a>
+                        <ul class="dropdown-menu" style="background-color: #99999c;">
+                            <li class="user-header">
+                                {% if current_user.face %}
+                                    <img src="{{ url_for('static', filename='uploads/userfaces/'+current_user.face) }}"
+                                         class="img-circle" alt="UserFace">
+                                {% else %}
+                                    <img src="{{ url_for('static', filename='admin/dist/img/user2-160x160.jpg') }}"
+                                         class="img-circle" alt="User Image">
+                                {% endif %}
+                                <p>
+                                    {{ current_user.name }}
+                                    <small>{{ online_time }}</small><!-- 在线时间 -->
+                                </p>
+                            </li>
+                            <li class="user-footer">
+                                <div class="pull-left">
+                                    <a href="{{ url_for("home.user") }}"
+                                       class="btn btn-default btn-flat">用户中心</a>
+                                </div>
+                                <div class="pull-right">
+                                    <a href="{{ url_for('home.login') }}"
+                                       class="btn btn-default btn-flat">退出登录</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                {% else %}
+
+                {% endif %}
             </ul>
         </div>
         <!--导航-->
-
     </div>
 </nav>
 <!--导航-->
@@ -109,8 +149,13 @@
         $("img.lazy").lazyload({
             effect: "fadeIn"
         });
+        $("#search-btn").click(function () {
+            var key = $("#search-key").val();
+            location.href = "{{ url_for('home.search') }}?kw=" + key;
+        });
     });
 </script>
+
 {% block js %}{% endblock %}
 </body>
 </html>
