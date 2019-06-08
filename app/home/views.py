@@ -1,17 +1,25 @@
 # coding:utf8
 from . import home
-from flask import render_template, redirect, url_for, flash, request
+from flask import render_template, redirect, url_for, flash, request, jsonify
 from werkzeug.urls import url_parse
-from .forms import LoginForm, RegisterForm, ResetPasswordRequestForm, ResetPasswordForm, UserForm, CommentForm
+from werkzeug.utils import secure_filename
+from .forms import LoginForm, RegisterForm, ResetPasswordRequestForm, ResetPasswordForm, UserForm, CommentForm, \
+    PwdWordForm
 from .email import send_password_reset_email
 from app import redis_store, db
 from flask import session
 from flask_login import login_user, logout_user, login_required, current_user
 # from app.libs.flask_login import login_user, logout_user, login_required
-from app.models import User, UserLog, Movie, Tag, Comment
-import uuid  # 唯一标识符
+from app.models import User, UserLog, Movie, Tag, Comment, Moviecol
 from config import Config
 from datetime import datetime
+import uuid  # 唯一标识符
+import os
+from app.libs.ip_addr_Info.get_Ip_Info import ip_info
+
+
+# info = ip_info.get_Addr("192.168.157.1")
+# print(info)
 
 
 # 获取当前时间作为在线时间
@@ -19,9 +27,17 @@ from datetime import datetime
 @home.context_processor
 def content_data():
     data = dict(
-        online_time=datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        online_time=datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        ip_info=ip_info.get_Addr
     )
     return data
+
+
+# 修改文件名，保证名称唯一
+def random_filename(filename):
+    fileinfo = os.path.splitext(filename)
+    filename = datetime.now().strftime("%Y%m%d%H%M%S") + str(uuid.uuid4().hex) + fileinfo[-1]
+    return filename
 
 
 # 主页
@@ -59,7 +75,7 @@ def play(id=None):
         db.session.add(comment)
         db.session.commit()
         flash('评论成功', "success")
-        return redirect(url_for('home.play',id=movie.id))
+        return redirect(url_for('home.play', id=movie.id))
     db.session.add(movie)
     db.session.commit()
     # 评论
@@ -72,8 +88,6 @@ def play(id=None):
         Comment.user_id == User.id
     ).order_by(Comment.addtime.desc()).paginate(page=page_index, per_page=Config.PER_PAGE)
     comments = pagination.items
-    # for com in comments:
-    #     print(com.content)
     return render_template('home/play.html', movie=movie, comments=comments, pagination=pagination, form=form)
 
 
@@ -90,7 +104,12 @@ def register():
     if form.validate_on_submit():
         print(form.validate_on_submit())
         data = form.data
-        user = User(name=data['username'], email=data['email'], phone=data['phonenumber'], uuid=uuid.uuid4().hex)
+        user = User(
+            name=data['username'],
+            email=data['email'],
+            phone=data['phonenumber'],
+            uuid=uuid.uuid4().hex
+        )
         user.set_password(data['password'])
         db.session.add(user)
         db.session.commit()
@@ -102,6 +121,7 @@ def register():
 # 登录
 @home.route("/login/", methods=["GET", "POST"])
 def login():
+    from sqlalchemy import or_
     form = LoginForm()
     if form.validate_on_submit():
         # 从前端获取form表单的数据（字典形式）
@@ -118,7 +138,13 @@ def login():
             return redirect(url_for("home.login"))
         # 验证码输入正确
         # 验证用户
-        user = User.query.filter_by(name=data['username']).first()
+        user = User.query.filter(
+            or_(
+                User.name == data['username'],
+                User.phone == data['username'],
+                User.email == data['username']
+            )
+        ).first()
         # 验证用和密码是否正确
         if user is None or not user.check_password(data["password"]):
             flash("用户名或密码错误", "error")
@@ -191,41 +217,144 @@ def reset_password(token):
 
 # 会员中心
 # 修改资料
-@home.route("/user/")
+@home.route("/user/", methods=["GET", "POST"])
 @login_required
 def user():
     form = UserForm()
+    form.face.validators = []
+    if request.method == "GET":
+        form.info.data = current_user.info
     if form.validate_on_submit():
         data = form.data
+        try:
+            face_file = secure_filename(form.face.data.filename)
+            if not os.path.exists(Config.USER_FACE_UPLOAD_DIR):
+                os.makedirs(Config.USER_FACE_UPLOAD_DIR)
+            current_user.face = random_filename(face_file)
+            form.face.data.save(os.path.join(Config.USER_FACE_UPLOAD_DIR, current_user.face))
+        except:
+            pass
+        exist_name = User.query.filter_by(name=data['name']).first()
+        if current_user.name != data['name'] and exist_name:
+            flash("昵称已经存在", "error")
+            return redirect(url_for('home.user'))
+
+        exist_email = User.query.filter_by(email=data['email']).first()
+        if current_user.email != data['email'] and exist_email:
+            flash("邮箱已经存在", "error")
+            return redirect(url_for('home.user'))
+
+        exist_phone = User.query.filter_by(phone=data['phone']).first()
+        if current_user.phone != data['phone'] and exist_phone:
+            flash("电话号码已经存在", "error")
+            return redirect(url_for('home.user'))
+
+        current_user.name = data['name']
+        current_user.email = data['email']
+        current_user.phone = data['phone']
+        current_user.info = data['info']
+        db.session.add(current_user)
+        db.session.commit()
+        flash('修改资料成功', 'success')
+        return redirect(url_for('home.user'))
 
     return render_template("home/user.html", form=form)
 
 
 # 修改密码
-@home.route("/pwd/")
+@home.route("/pwd/", methods=["GET", "POST"])
 @login_required
 def pwd():
-    return render_template("home/password.html")
+    form = PwdWordForm()
+    if form.validate_on_submit():
+        data = form.data
+        # user = User.query.filter_by(name=current_user.name).first()
+        current_user.set_password(data['new_pwd'])
+        db.session.add(current_user)
+        db.session.commit()
+        flash('修改密码成功', 'success')
+        return redirect(url_for("home.logout"))
+    return render_template("home/password.html", form=form)
 
 
 # 评论
 @home.route("/comments/")
 @login_required
 def comments():
-    return render_template("home/comments.html")
+    page_index = request.args.get('page', 1, type=int)
+    # 实现分页信息
+    pagination = Comment.query.join(
+        Movie
+    ).join(
+        User
+    ).filter(
+        Movie.id == Comment.movie_id,
+        current_user.id == Comment.user_id
+    ).order_by(
+        Comment.addtime.desc()
+    ).paginate(page=page_index, per_page=Config.PER_PAGE)
+    # 电影的信息
+    comment_data = pagination.items
+    return render_template("home/comments.html", comment_data=comment_data, pagination=pagination)
 
 
 # 登录日志
 @home.route("/loginlog/")
 def loginlog():
-    return render_template("home/loginlog.html")
+    page_index = request.args.get('page', 1, type=int)
+    # 实现分页信息
+    pagination = UserLog.query.filter_by(
+        user_id=int(current_user.id)
+    ).order_by(
+        UserLog.addtime.desc()
+    ).paginate(page=page_index, per_page=Config.PER_PAGE)
+    # 用户的信息
+    user_data = pagination.items
+    return render_template("home/loginlog.html", user_data=user_data, pagination=pagination)
 
 
-# 电影收藏
+# 电影收藏添加
+@home.route("/moviecol/add/")
+@login_required
+def moviecol_add():
+    movie_id = request.args.get('mid')
+    user_id = request.args.get("uid")
+    moviecol = Moviecol.query.filter_by(
+        movie_id=int(movie_id),
+        user_id=int(user_id)
+    ).first()
+    if moviecol:
+        data = jsonify({'success': 0})
+    else:
+        moviecol = Moviecol(
+            user_id=int(user_id),
+            movie_id=int(movie_id)
+        )
+        db.session.add(moviecol)
+        db.session.commit()
+        data = jsonify({"success": 1})
+    return data
+
+
+# 电影收藏展示
 @home.route("/moviecol/")
 @login_required
 def moviecol():
-    return render_template("home/moviecol.html")
+    page_index = request.args.get('page', 1, type=int)
+    # 实现分页信息
+    pagination = Moviecol.query.join(
+        User
+    ).join(
+        Movie
+    ).filter(
+        Movie.id == Moviecol.movie_id,
+        Moviecol.user_id == int(current_user.id)
+    ).order_by(
+        Moviecol.addtime.desc()
+    ).paginate(page=page_index, per_page=Config.PER_PAGE)
+    # 电影的信息
+    moviecol_data = pagination.items
+    return render_template("home/moviecol.html", moviecol_data=moviecol_data, pagination=pagination)
 
 
 # 搜索页面

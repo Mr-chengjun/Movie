@@ -1,5 +1,12 @@
 {% extends "admin/base.html" %}
 {% import "pagination/admin_pagination.html" as page %}
+{% block css %}
+   <style>
+    p {
+        display: inline-block;
+    }
+   </style>
+{% endblock %}
 {% block content %}
     <section class="content-header">
         <h1>微电影管理系统</h1>
@@ -37,9 +44,15 @@
                         {% endfor %}
                         {% for comm in comm_data %}
                             <div class="box-comment">
-                                <img class="img-circle img-sm"
-                                     src="{{ url_for("static", filename="uploads/userfaces/"+comm.user.face) }}"
-                                     alt="User Image">
+                                {% if comm.user.face %}
+                                    <img class="img-circle img-sm"
+                                         src="{{ url_for("static", filename="uploads/userfaces/"+comm.user.face) }}"
+                                         alt="User Image">
+                                {% else %}
+                                    <img class="img-circle img-sm"
+                                         src="holder.js/128x128}"
+                                         alt="User Image">
+                                {% endif %}
                                 <div class="comment-text">
                                     <span class="username">
                                         {{ comm.user.name }}
@@ -49,8 +62,9 @@
                                             {{ comm.addtime }}
                                         </span>
                                     </span>
-                                    关于电影<a>《{{ comm.movie.title }}》</a>的评论：{{ comm.content }}
-                                    <br><a href="{{ url_for("admin.comment_delete", id=comm.id) }}" class="label label-danger pull-right">删除</a>
+                                    关于电影<a>《{{ comm.movie.title }}》</a>的评论：{{ comm.content|safe }}
+                                    <br><a href="{{ url_for("admin.comment_delete", id=comm.id) }}"
+                                           class="label label-danger pull-right">删除</a>
                                 </div>
                             </div>
                         {% endfor %}

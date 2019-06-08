@@ -29,7 +29,6 @@
                     <div class="alert alert-success alert-dismissible">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×
                         </button>
-                        <h4><i class="icon fa fa-check"></i> 修改成功</h4>
                         {{ message }}
                     </div>
                 {% endfor %}
@@ -37,7 +36,6 @@
                     <div class="alert alert-danger alert-dismissible">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×
                         </button>
-                        <h4><i class="icon fa fa-ban"></i> 修改失败</h4>
                         {{ message }}
                     </div>
                 {% endfor %}
@@ -48,37 +46,49 @@
                         <div class="form-group">
                             <label for="input_name"><span
                                     class="glyphicon glyphicon-user"></span>&nbsp;{{ form.name.label }}</label>
-                            {{ form.name(value="chengjun") }}
+                            {{ form.name(value=current_user.name) }}
                         </div>
-                        <div class="col-md-12" id="error_name"></div>
+                        {% for error in form.name.errors %}
+                            <span style="color:red;">[{{ error }}]</span>
+                        {% endfor %}
                         <div class="form-group">
                             <label for="input_email"><span
                                     class="glyphicon glyphicon-envelope"></span>&nbsp;{{ form.email.label }}</label>
-                            {{ form.email(value="1174948552@qq.com") }}
+                            {{ form.email(value=current_user.email) }}
                         </div>
-                        <div class="col-md-12" id="error_email"></div>
+                        {% for error in form.email.errors %}
+                            <span style="color:red;">[{{ error }}]</span>
+                        {% endfor %}
                         <div class="form-group">
                             <label for="input_phone"><span
                                     class="glyphicon glyphicon-phone"></span>&nbsp;{{ form.phone.label }}</label>
-                            {{ form.phone(value="17864395625") }}
+                            {{ form.phone(value=current_user.phone) }}
                         </div>
-                        <div class="col-md-12" id="error_phone"></div>
+                        {% for error in form.phone.errors %}
+                            <span style="color:red;">[{{ error }}]</span>
+                        {% endfor %}
                         <div class="form-group">
                             <label for="input_face">
                                 <span class="glyphicon glyphicon-picture"></span>&nbsp;{{ form.face.label }}
                             </label>
                             {{ form.face }}
+                            {% if current_user.face %}
+                            <img src="{{ url_for('static', filename='uploads/userfaces/'+current_user.face) }}" class="img-responsive img-rounded" style="width: 100px;">
+                            {% else %}
                             <img src="holder.js/100x100" class="img-responsive img-rounded">
-
-
+                            {% endif %}
                         </div>
-                        <div class="col-md-12" id="error_face"></div>
+                        {% for error in form.face.errors %}
+                            <span style="color:red;">[{{ error }}]</span>
+                        {% endfor %}
                         <div class="form-group">
                             <label for="input_info"><span
                                     class="glyphicon glyphicon-edit"></span>&nbsp;{{ form.info.label }}</label>
-                            {{ form.info(value="世界总是美好的") }}
+                            {{ form.info }}
                         </div>
-                        <div class="col-md-12" id="error_info"></div>
+                        {% for error in form.info.errors %}
+                            <span style="color:red;">[{{ error }}]</span>
+                        {% endfor %}
                         {{ form.submit }}
                     </fieldset>
                 </form>

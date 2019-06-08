@@ -105,7 +105,8 @@
                                     <span aria-hidden="true">×</span>
                                     <span class="sr-only">Close</span>
                                 </button>
-                                <strong>请先<a href="{{ url_for('home.login') }}" target="_blank"
+                                <strong>请先<a href="{{ url_for('home.login', next=request.url.split('/',3)[-1]) }}"
+                                             target="_blank"
                                              class="text-info">登录</a>，才可参与评论！</strong>
                             </div>
                         {% endif %}
@@ -117,7 +118,7 @@
                                 <div class="alert alert-success alert-dismissible">
                                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×
                                     </button>
-                                    <h4><i class="icon fa fa-check"></i> 操作成功</h4>
+                                    <h4><i class="icon fa fa-check"></i>评论成功</h4>
                                     {{ message }}
                                 </div>
                             {% endfor %}
@@ -135,26 +136,31 @@
                                 {{ form.submit }}
                                 &nbsp;
                                 <a class="btn btn-danger" id="btn-col"><span class="glyphicon glyphicon-heart"></span>&nbsp;收藏电影</a>
+
                             </form>
+                            <div class="col-md-12">
+                                <span style="color:green;" id="show-col-movie-msg"></span>
+                            </div>
+                            <div class="clearfix"></div>
                         {% endif %}
                         <ul class="commentList">
                             {% for comment in comments %}
                                 <li class="item cl">
-                                    <a href="user.html">
+                                    <a href="{{ url_for('home.user') }}">
                                         {% if comment.user.face %}
-                                        <i class="avatar size-L radius">
-                                            <img alt="50x50"
-                                                 src="{{ url_for('static', filename='uploads/userfaces/' + comment.user.face) }}"
-                                                 class="img-circle"
-                                                 style="border:1px solid #abcdef;width: 50px;">
-                                        </i>
-                                            {% else %}
                                             <i class="avatar size-L radius">
-                                            <img alt="50x50"
-                                                 src=""
-                                                 class="img-circle"
-                                                 style="border:1px solid #abcdef;width: 50px;">
-                                        </i>
+                                                <img alt="50x50"
+                                                     src="{{ url_for('static', filename='uploads/userfaces/' + comment.user.face) }}"
+                                                     class="img-circle"
+                                                     style="border:1px solid #abcdef;width: 50px;">
+                                            </i>
+                                        {% else %}
+                                            <i class="avatar size-L radius">
+                                                <img alt="50x50"
+                                                     src=""
+                                                     class="img-circle"
+                                                     style="border:1px solid #abcdef;width: 50px;">
+                                            </i>
                                         {% endif %}
                                     </a>
                                     <div class="comment-main">
@@ -237,15 +243,39 @@
     </script>
     <!--播放页面-->
     <script>
-        $(function () {
-            new WOW().init();
-        })
-    </script>
-    <script>
         $(document).ready(function () {
-            $("img.lazy").lazyload({
-                effect: "fadeIn"
+
+            $("#btn-col").click(function () {
+
+                var mid = {{ movie.id }};
+                var uid = {{ current_user.id }};
+                $.ajax({
+                    url: "{{ url_for('home.moviecol_add') }}",
+                    type: "GET",
+                    data: "mid=" + mid + "&uid=" + uid,
+                    dataType: "json",
+                    success: function (response) {
+                        if (response.success == 1) {
+                            $("#show-col-movie-msg").empty();
+                            $("#show-col-movie-msg").html("收藏成功");
+                        } else {
+                            $("#show-col-movie-msg").html("已经收藏");
+                        }
+                    }
+                });
             });
         });
     </script>
+    {#    <script>#}
+    {#        $(function () {#}
+    {#            new WOW().init();#}
+    {#        })#}
+    {#    </script>#}
+    {#    <script>#}
+    {#        $(document).ready(function () {#}
+    {#            $("img.lazy").lazyload({#}
+    {#                effect: "fadeIn"#}
+    {#            });#}
+    {#        });#}
+    {#    </script>#}
 {% endblock %}

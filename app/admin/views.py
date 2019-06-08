@@ -52,8 +52,8 @@ def admin_auth(f):
         # 通过从role表中取出的auths列表,构造出所拥有的权限
         urls = [v.url for v in auth_list for value in auths if value == v.id]
         rule = request.url_rule
-        print(str(rule))
-        print(urls)
+        # print(str(rule))
+        # print(urls)
         # is_super=1代表是超级管理员，
         # 这么做的目的是给超级管理员所有权限
         if admin.is_super == 1 and str(rule) not in urls:
@@ -711,7 +711,6 @@ def admin_add():
     form = AdminForm()
     if form.validate_on_submit():
         data = form.data
-        print(data)
         admin = Admin(
             name=data['name'],
             role_id=data['role_id'],
