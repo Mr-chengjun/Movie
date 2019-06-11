@@ -5,12 +5,13 @@ from werkzeug.urls import url_parse
 from werkzeug.utils import secure_filename
 from .forms import LoginForm, RegisterForm, ResetPasswordRequestForm, ResetPasswordForm, UserForm, CommentForm, \
     PwdWordForm
+from sqlalchemy import distinct, extract
 from .email import send_password_reset_email
 from app import redis_store, db
 from flask import session
 from flask_login import login_user, logout_user, login_required, current_user
 # from app.libs.flask_login import login_user, logout_user, login_required
-from app.models import User, UserLog, Movie, Tag, Comment, Moviecol
+from app.models import User, UserLog, Movie, Tag, Comment, Moviecol, Preview
 from config import Config
 from datetime import datetime
 import uuid  # 唯一标识符
@@ -43,12 +44,57 @@ def random_filename(filename):
 # 主页
 @home.route("/")
 def index():
+    pagination1 = Movie.query
+    # 标签
+    tid = request.args.get("tid", 0)
+    if int(tid) != 0:
+        pagination1 = pagination1.filter_by(tag_id=int(tid))
+
+    # 地区
+    area = request.args.get("area", '')
+    if area != '':
+        pagination1 = pagination1.filter_by(area=area)
+
+    # # 年份
+    # year = request.args.get("year", 0)
+    # if int(year) != 0:
+    #     pagination1.filter(extract('year', Movie.release_time) == int(year))
+    #     return str(pagination1.filter(extract('year', Movie.release_time) == 2019).all())
+
+    # 播放量，热度
+    sort = request.args.get("sort", 0)
+    if int(sort) != 0:
+        if int(sort) == 1:
+            pagination1 = pagination1.order_by(Movie.playnum.desc())
+        # 上映时间
+        elif int(sort) == 2:
+            pagination1 = pagination1.order_by(Movie.release_time.desc())
+        # 评论量
+        elif int(sort) == 3:
+            pagination1 = pagination1.order_by(Movie.commentnum.desc())
+
+    # 评分
+    score = request.args.get("score", 0)
+    if int(score) != 0:
+        pagination1 = pagination1.order_by(Movie.score.desc())
+
+    p = dict(
+        tid=tid,
+        area=area,
+        # year=year,
+        sort=sort
+    )
     page_index = request.args.get('page', 1, type=int)
     # 实现分页信息
-    pagination = Movie.query.order_by(Movie.addtime.desc()).paginate(page=page_index, per_page=Config.PER_PAGE)
+    pagination = pagination1.paginate(page=page_index, per_page=Config.PER_PAGE)
     # 电影的信息
     movie_data = pagination.items
-    return render_template("home/index.html", movie_data=movie_data, pagination=pagination)
+    tags = Tag.query.all()
+    areas = [i[0] for i in Movie.query.with_entities(distinct(Movie.area)).all()]
+    years = list(set(i[0].year for i in Movie.query.with_entities(distinct(Movie.release_time)).all()))
+    return render_template("home/index.html", movie_data=movie_data, pagination=pagination, tags=tags,
+                           areas=(areas, len(areas)),
+                           years=[years, len(years)], p=p)
 
 
 # 播放
@@ -176,7 +222,8 @@ def logout():
 # 电影上映预告轮播图
 @home.route('/animation/')
 def animation():
-    return render_template('home/animation.html')
+    preview = Preview.query.all()
+    return render_template('home/animation.html', preview=preview)
 
 
 # 重置密码请求

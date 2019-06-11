@@ -1,5 +1,21 @@
 {% extends "home/base.html" %}
 {% import "pagination/main_pagination.html" as page %}
+{% block css %}
+    <style>
+        a {
+            color: #333;
+        }
+
+        .right a:hover {
+            color: #fff;
+        }
+
+        a:hover {
+            color: #fff;
+            background-color: red;
+        }
+    </style>
+{% endblock %}
 {% block content %}
     <!--热门电影-->
     <section id="hotmovie" style="margin-top:0px">
@@ -24,65 +40,19 @@
                                 <span>类型:</span>
                             </div>
                             <div class="right">
-                                <input type="radio" id="q1" name="A1" checked="checked"/>
+
+                                <input type="radio" id="q1" name="A1" checked/>
                                 <label for="q1">
-                                    全部
+                                    <a href="{{ url_for('home.index') }}?tid=0&area={{ p['area'] }}&sort={{ p['sort'] }}">全部</a>
                                 </label>
-                                <input type="radio" id="q2" name="A1"/>
-                                <label for="q2">
-                                    喜剧
-                                </label>
-                                <input type="radio" id="q3" name="A1"/>
-                                <label for="q3">
-                                    动画
-                                </label>
-                                <input type="radio" id="q4" name="A1"/>
-                                <label for="q4">
-                                    剧情
-                                </label>
-                                <input type="radio" id="q5" name="A1"/>
-                                <label for="q5">
-                                    恐怖
-                                </label>
-                                <input type="radio" id="q6" name="A1"/>
-                                <label for="q6">
-                                    惊悚
-                                </label>
-                                <input type="radio" id="q7" name="A1"/>
-                                <label for="q7">
-                                    科幻
-                                </label>
-                                <input type="radio" id="q8" name="A1"/>
-                                <label for="q8">
-                                    悬疑
-                                </label>
-                                <input type="radio" id="q9" name="A1"/>
-                                <label for="q9">
-                                    犯罪
-                                </label>
-                                <input type="radio" id="q12" name="A1"/>
-                                <label for="q12">
-                                    喜剧
-                                </label>
-                                <input type="radio" id="q13" name="A1"/>
-                                <label for="q13">
-                                    动画
-                                </label>
-                                <input type="radio" id="q14" name="A1"/>
-                                <label for="q14">
-                                    剧情
-                                </label>
-                                <input type="radio" id="q15" name="A1"/>
-                                <label for="q15">
-                                    恐怖
-                                </label>
-                                <input type="radio" id="q16" name="A1"/>
-                                <label for="q16">
-                                    惊悚
-                                </label>
-
+                                {% for tag in tags %}
+                                    <input class="checked-1" type="radio" id="tag{{ tag.id }}" name="A1"
+                                           value="{{ tag.id }}">
+                                    <label class="tag-1" for="tag{{ tag.id }}" id="q{{ tag.id + 1 }}">
+                                        <a href="{{ url_for('home.index') }}?tid={{ tag.id }}&area={{ p['area'] }}&sort={{ p['sort'] }}">{{ tag.name }}</a>
+                                    </label>
+                                {% endfor %}
                             </div>
-
 
                         </div>
                         <div class="line"></div>
@@ -91,175 +61,52 @@
                                 <span>区域:</span>
                             </div>
                             <div class="right">
-                                <input type="radio" id="q21" name="A2" checked="checked"/>
-                                <label for="q21">
-                                    全部
+                                <input type="radio" id="aq1" name="A2" checked/>
+                                <label for="aq1">
+                                    <a href="{{ url_for('home.index') }}?tid={{ p['tid'] }}&area=&sort={{ p['sort'] }}">全部</a>
                                 </label>
-                                <input type="radio" id="q22" name="A2"/>
-                                <label for="q22">
-                                    大陆
-                                </label>
-                                <input type="radio" id="q23" name="A2"/>
-                                <label for="q23">
-                                    美国
-                                </label>
-                                <input type="radio" id="q24" name="A2"/>
-                                <label for="q24">
-                                    韩国
-                                </label>
-                                <input type="radio" id="q25" name="A2"/>
-                                <label for="q25">
-                                    日本
-                                </label>
-                                <input type="radio" id="q26" name="A2"/>
-                                <label for="q26">
-                                    中国香港
-                                </label>
-                                <input type="radio" id="q27" name="A2"/>
-                                <label for="q27">
-                                    中国台湾
-                                </label>
-                                <input type="radio" id="q28" name="A2"/>
-                                <label for="q28">
-                                    印度
-                                </label>
-                                <input type="radio" id="q29" name="A2"/>
-                                <label for="q29">
-                                    英国
-                                </label>
-
-                                <input type="radio" id="q211" name="A2"/>
-                                <label for="q211">
-                                    法国
-                                </label>
-                                <input type="radio" id="q212" name="A2"/>
-                                <label for="q212">
-                                    德国
-                                </label>
-                                <input type="radio" id="q213" name="A2"/>
-                                <label for="q213">
-                                    新加坡
-                                </label>
-                                <input type="radio" id="q214" name="A2"/>
-                                <label for="q214">
-                                    俄罗斯
-                                </label>
-
-
+                                {% for i in range(areas[1]) %}
+                                    <input class="area-1" type="radio" id="area{{ i }}" name="A2"
+                                           value="{{ areas[0][i] }}"/>
+                                    <label for="area{{ i }}">
+                                        <a href="{{ url_for('home.index') }}?tid={{ p['tid'] }}&area={{ areas[0][i] }}&sort={{ p['sort'] }}">{{ areas[0][i] }}</a>
+                                    </label>
+                                {% endfor %}
                             </div>
-
-
                         </div>
                         <div class="line"></div>
                         <div class="select_goods_box ">
                             <div class="left">
-                                <span>年代:</span>
+                                <span>排序:</span>
                             </div>
                             <div class="right">
-                                <input type="radio" id="q31" name="A3" checked="checked"/>
-                                <label for="q31">
-                                    全部
+                                <input class="sort-1" type="radio" id="s1" name="A3" value="1"/>
+                                <label for="s1">
+                                    <a href="{{ url_for('home.index') }}?tid={{ p['tid'] }}&area={{ p['area'] }}&sort=1">按热门排序</a>
                                 </label>
-                                <input type="radio" id="q32" name="A3"/>
-                                <label for="q32">
-                                    2019以后
+                                <input class="sort-1" type="radio" id="s2" name="A3" value="2"/>
+                                <label for="s2">
+                                    <a href="{{ url_for('home.index') }}?tid={{ p['tid'] }}&area={{ p['area'] }}&sort=2">按时间排序</a>
                                 </label>
-                                <input type="radio" id="q33" name="A3"/>
-                                <label for="q33">
-                                    2019
-                                </label>
-                                <input type="radio" id="q34" name="A3"/>
-                                <label for="q34">
-                                    2018
-                                </label>
-                                <input type="radio" id="q35" name="A3"/>
-                                <label for="q35">
-                                    2017
-                                </label>
-                                <input type="radio" id="q36" name="A3"/>
-                                <label for="q36">
-                                    2016
-                                </label>
-                                <input type="radio" id="q37" name="A3"/>
-                                <label for="q37">
-                                    2015
-                                </label>
-                                <input type="radio" id="q38" name="A3"/>
-                                <label for="q38">
-                                    2014
-                                </label>
-                                <input type="radio" id="q39" name="A3"/>
-                                <label for="q39">
-                                    2013
-                                </label>
-
-                                <input type="radio" id="q311" name="A3" />
-                                <label for="q311">
-                                    2012
-                                </label>
-                                <input type="radio" id="q312" name="A3"/>
-                                <label for="q312">
-                                    2011
-                                </label>
-                                <input type="radio" id="q313" name="A3"/>
-                                <label for="q313">
-                                    2000-2010
-                                </label>
-                                <input type="radio" id="q314" name="A3"/>
-                                <label for="q314">
-                                    90年代
-                                </label>
-                                <input type="radio" id="q315" name="A3"/>
-                                <label for="q315">
-                                    80年代
-                                </label>
-                                <input type="radio" id="q316" name="A3"/>
-                                <label for="q316">
-                                    70年代
-                                </label>
-                                <input type="radio" id="q317" name="A3"/>
-                                <label for="q317">
-                                    更早
+                                <input class="sort-1" type="radio" id="s3" name="A3" value="3"/>
+                                <label for="s3">
+                                    <a href="{{ url_for('home.index') }}?tid={{ p['tid'] }}&area={{ p['area'] }}&sort=3">按评价排序</a>
                                 </label>
                             </div>
                         </div>
-
                     </div>
                 </div>
-                <div class="sort-radio">
-                    <input type="radio" id="sort1" name="sort" checked="checked"/>
-                    <label for="sort1">
-                        <div class="circle">
-                            <div class="circle-center"></div>
-                        </div>
-                        按热门排序
-                    </label>
-                    <input type="radio" id="sort2" name="sort"/>
-                    <label for="sort2">
-                        <div class="circle">
-                            <div class="circle-center"></div>
-                        </div>
-                        按时间排序
-                    </label>
-                    <input type="radio" id="sort3" name="sort"/>
-                    <label for="sort3">
-                        <div class="circle">
-                            <div class="circle-center"></div>
-                        </div>
-                        按评价排序
-                    </label>
-                </div>
+
                 <div class="movie">
                     {% for movie in movie_data %}
                         <div class="movie-box margin-left15">
                             <div class="img-box">
                                 <a href="{{ url_for('home.play',id=movie.id) }}">
-                                    <img src="{{ url_for('static', filename='uploads/'+movie.logo)}}"/>
-                                    <span style="color: white; background-color: orangered;">{{ movie.score }}</span> </a>
+                                    <img src="{{ url_for('static', filename='uploads/'+movie.logo) }}"/>
+                                    <span style="color: white; background-color: orangered;">{{ movie.score }}</span>
+                                </a>
                             </div>
-
                             <p>{{ movie.title }}</p>
-
                         </div>
                     {% endfor %}
                 </div>
@@ -274,4 +121,53 @@
         </div>
     </section>
     <!--电影列表-->
+{% endblock %}
+
+{% block js %}
+    <script>
+        $(document).ready(function () {
+            var theRequest = new Object();
+            var urls = window.location.search.toString().replace("?", "").split("&");
+            for (var i = 0; i < urls.length; i++) {
+                console.log(urls[i].split("=")[0])
+                theRequest[urls[i].split("=")[0]] = decodeURI(urls[i].split("=")[1]);
+            }
+
+
+            $(".checked-1").each(function () {
+                {#alert(theRequest.tid, $(this).attr("id"))#}
+                if (theRequest.tid == $(this).val()) {
+                    var tid = $(this).attr('id')
+                    $("#" + tid).attr("checked", "checked");
+                }
+                 else  {
+                $("#q1").attr("checked", "checked");
+            }
+            });
+
+
+            $(".area-1").each(function () {
+                {#alert(theRequest.tid, $(this).attr("id"))#}
+                if (theRequest.area == $(this).val()) {
+                    var id = $(this).attr('id')
+                    $("#" + id).attr("checked", "checked");
+                }
+                else  {
+                    $("#aq1").attr("checked", "checked");
+                }
+            })
+
+
+            $(".sort-1").each(function () {
+                {#alert(theRequest.tid, $(this).attr("id"))#}
+                if (theRequest.sort == $(this).val()) {
+                    var id = $(this).attr('id')
+                    $("#" + id).attr("checked", "checked");
+                }
+                else {
+                    $("#aq1").attr("checked", "checked");
+                }
+            })
+        })
+    </script>
 {% endblock %}
