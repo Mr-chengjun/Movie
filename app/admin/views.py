@@ -1,5 +1,5 @@
 from . import admin
-from flask import render_template, request, redirect, url_for, flash, session, abort
+from flask import render_template, request, redirect, url_for, flash, session, jsonify
 from app.admin.forms import LoginForm, TagForm, MovieAddForm, PreviewForm, PassWordForm, AuthForm, RoleForm, AdminForm
 from app.models import Admin, Tag, Movie, Preview, User, Comment, Moviecol, OpLog, AdminLog, UserLog, Auth, Role
 from flask_login import login_user, logout_user, login_required
@@ -10,6 +10,17 @@ import uuid, os, datetime
 from config import Config
 
 from functools import wraps
+
+import psutil
+
+
+# # 内存监控
+# @admin.route('/cpuused/')
+# def data1():
+#     result = psutil.cpu_percent(1)
+#     dics = {'dat': float(result)}
+#     print(result)
+#     return jsonify(dics)
 
 
 # 上下文处理器
@@ -810,7 +821,8 @@ def search_preview():
     # print("request.remote_addr:", request.remote_addr)
     print("request.endpoint:", request.endpoint)
     # print("request.environ:", request.environ)
-    return render_template("admin/preview_list.html", keywords=keywords, preview_data=preview_data, pagination=pagination)
+    return render_template("admin/preview_list.html", keywords=keywords, preview_data=preview_data,
+                           pagination=pagination)
 
 
 @admin.route('/user/search/')
